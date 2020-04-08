@@ -1,4 +1,4 @@
-# 1.1.0 (2020-04-08)
+## 1.1.1 (2020-04-08)
 
 
 ### Features
@@ -7,8 +7,3 @@
 
 
 
-# 1.1.0 (2020-04-08)
-
-### Features
-
-* **global:** Complete basic setup along with changelog 21f0962
