@@ -37,10 +37,13 @@
         "prettier/prettier": [
             "error",
             {
-                "printWidth": 100,
-                "semi": false,
+                "printWidth": 120,
                 "jsxSingleQuote": true,
-                "singleQuote": true
+                "singleQuote": true,
+                "endOfLine": "lf",
+                "semi": false,
+                "tabWidth": 2,
+                "trailingComma": "es5"
             }
         ]
     }
