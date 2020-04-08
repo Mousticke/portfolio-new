@@ -6,8 +6,15 @@
     "extends": [
         "plugin:react/recommended",
         "airbnb",
-        "prettier"
+        "prettier",
+        "plugin:import/errors",
+        "plugin:import/warnings"
     ],
+    "settings": {
+        "import/resolver": {
+            "babel-module": {}
+        }
+    },
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
