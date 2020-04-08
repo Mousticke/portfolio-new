@@ -19,6 +19,7 @@
   },
   "scripts": {
     "format": "eslint . --fix",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
