@@ -1,12 +1,11 @@
 {
   "name": "portfolio-new",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -21,7 +20,7 @@
   "scripts": {
     "format": "eslint . --fix",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
-    "start": "react-scripts start",
+    "start": "react-app-rewired start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -50,31 +49,9 @@
       "last 1 safari version"
     ]
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      [
-        "module-resolver",
-        {
-          "root": [
-            "./src"
-          ],
-          "alias": {
-            "@components": "./src/components",
-            "@styles": "./src/styles",
-            "@hooks": "./src/hooks",
-            "@pages": "./src/pages",
-            "@config": "./src/config",
-            "@resources": "./src/resources"
-          }
-        }
-      ]
-    ]
-  },
   "devDependencies": {
     "babel-plugin-module-resolver": "^4.0.0",
+    "customize-cra": "^0.9.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.1",
@@ -85,7 +62,8 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "husky": "^4.2.3",
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.4",
+    "react-app-rewired": "^2.1.5"
   },
   "author": {
     "name": "Akim Benchiha",

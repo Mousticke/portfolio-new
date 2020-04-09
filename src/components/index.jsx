@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import SEO from './SEO'
 
-export default { SEO }
+export { SEO }
