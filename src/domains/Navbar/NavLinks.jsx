@@ -7,7 +7,7 @@ import { breakpoints, fonts } from '@styles'
 import { HashLink as Link } from 'react-router-hash-link'
 
 const NavLinksWrapper = styled.div`
-  grid-column: 3;
+  grid-area: navLinks;
   display: flex;
   align-items: center;
   justify-content: flex-end;

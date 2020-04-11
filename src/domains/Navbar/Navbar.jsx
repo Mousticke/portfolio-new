@@ -12,6 +12,7 @@ import BurgerMenu from './BurgerMenu'
 import NavLinks from './NavLinks'
 
 const Header = styled.header`
+  grid-area: header;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,7 +34,9 @@ const Header = styled.header`
 `
 const Nav = styled.nav`
   display: grid;
-  grid-template-columns: 3rem auto minmax(auto, 1fr) 3rem;
+  grid-template-columns: 3rem minmax(auto, 1fr) 4rem;
+  grid-auto-flow: row;
+  grid-template-areas: 'logo navLinks hamburger';
   align-items: center;
   position: relative;
   width: 100%;
@@ -44,6 +47,7 @@ const Nav = styled.nav`
 `
 
 const Brand = styled.div`
+  grid-area: logo;
   a {
     display: block;
     color: ${(props) => props.theme.colors.navbar.brand_color};

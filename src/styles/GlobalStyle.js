@@ -8,6 +8,11 @@ const GlobalStyle = createGlobalStyle`
     html {
     box-sizing: border-box;
     width: 100%;
+    font-size: ${fonts.size.root_giant};
+    ${breakpoints.giant`font-size: ${fonts.size.root_giant};`};
+    ${breakpoints.bigDesktop`font-size: ${fonts.size.root_bigDesktop};`};
+    ${breakpoints.desktop`font-size: ${fonts.size.root};`};
+    ${breakpoints.tablet`font-size: ${fonts.size.root_small};`};
   }
   *,
   *:before,
@@ -24,9 +29,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     line-height: ${fonts.line_height};
     font-family: ${fonts.style.sans_serif};
-    font-size: ${fonts.size.root};
-    ${breakpoints.phablet`font-size: ${fonts.size.root_small};`}
-
+    
     &.dark-mode{
       background-color:${themeDark.colors.background.default}
     }
@@ -53,11 +56,15 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  #root {
+  .App {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr . 1fr;
     grid-template-columns: 100%;
+    grid-template-areas: 
+      "header"
+      "main"
+      "footer"
   }
 
   h1,

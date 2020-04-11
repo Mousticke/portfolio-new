@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, GlobalStyle } from '@styles'
-import { SEO } from '@components'
+import { SEO, Main } from '@components'
 import { Navbar } from '@domains'
 
 const Container = styled.div`
@@ -12,8 +12,15 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
+  grid-area: main;
   background: ${(props) => props.theme.colors.background.landing};
   flex: 0 0 100%;
+`
+const Footer = styled.footer`
+  grid-area: footer;
+  background: red;
+  flex: 0 0 100%;
+  height: 3rem;
 `
 
 function App() {
@@ -29,13 +36,7 @@ function App() {
         <GlobalStyle />
         <Navbar />
         <Wrapper theme={isDarkMode ? themeDark : themeDark} id='wrapper'>
-          <main
-            style={{
-              minHeight: `100vh`,
-              marginLeft: `auto`,
-              marginRight: `auto`,
-            }}
-          >
+          <Main>
             <section
               id='home'
               style={{
@@ -71,8 +72,9 @@ function App() {
             >
               Section
             </section>
-          </main>
+          </Main>
         </Wrapper>
+        <Footer />
       </Container>
     </ThemeProvider>
   )

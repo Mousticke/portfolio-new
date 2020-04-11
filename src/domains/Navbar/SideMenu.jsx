@@ -62,14 +62,14 @@ const NavListItem = styled.li`
   counter-increment: item 1;
   ${breakpoints.tablet`
     margin: 0 auto 10px;
-    font-size: ${fonts.size.md};
+    font-size: ${fonts.size.xl};
   `};
-  ${breakpoints.tiny`font-size: ${fonts.size.xs};`};
+  ${breakpoints.tiny`font-size: ${fonts.size.lg};`};
   &:before {
     display: block;
     content: '0' counter(item) '.';
     color: ${(props) => props.theme.colors.navbar.number};
-    font-size: ${fonts.size.sm};
+    font-size: ${fonts.size.lg};
     margin-bottom: 5px;
   }
 `

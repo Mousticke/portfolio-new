@@ -4,13 +4,11 @@ import styled from 'styled-components'
 import { transitionAll, breakpoints, transitionHamburger } from '@styles'
 
 const BurgerContainer = styled.div`
-  grid-column: 4;
+  grid-area: hamburger;
   display: none;
   justify-content: center;
   align-items: center;
   overflow: visible;
-  margin: 0 -12px 0 0;
-  padding: 15px;
   cursor: pointer;
   transition-timing-function: linear;
   transition-duration: 200ms;
