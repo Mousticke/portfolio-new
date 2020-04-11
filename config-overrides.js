@@ -11,5 +11,6 @@ module.exports = override(
     '@config': path.resolve('./src/config'),
     '@resources': path.resolve('./src/resources'),
     '@utils': path.resolve('./src/utils'),
+    '@domains': path.resolve('./src/domains'),
   })
 )

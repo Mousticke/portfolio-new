@@ -11,7 +11,7 @@ import SideMenu from './SideMenu'
 import BurgerMenu from './BurgerMenu'
 import NavLinks from './NavLinks'
 
-const StyledHeader = styled.header`
+const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,7 +31,7 @@ const StyledHeader = styled.header`
   ${breakpoints.tablet`
   padding: 0 1.6rem;`};
 `
-const StyledNav = styled.nav`
+const Nav = styled.nav`
   display: grid;
   grid-template-columns: 3rem auto minmax(auto, 1fr) 3rem;
   align-items: center;
@@ -43,7 +43,7 @@ const StyledNav = styled.nav`
   counter-reset: item 0;
 `
 
-const StyledBrand = styled.div`
+const Brand = styled.div`
   a {
     display: block;
     color: ${(props) => props.theme.colors.navbar.brand_color};
@@ -85,19 +85,19 @@ function Navbar() {
   }, [showSide])
 
   return (
-    <StyledHeader>
+    <Header>
       <Helmet>
         <body className={showSide ? 'blur' : ''} />
       </Helmet>
-      <StyledNav>
+      <Nav>
         <TransitionGroup component={null}>
           {isMounted && (
             <CSSTransition classNames='fade' timeout={1000}>
-              <StyledBrand>
+              <Brand>
                 <Link to='#home' aria-label='home'>
                   <BrandIcon />
                 </Link>
-              </StyledBrand>
+              </Brand>
             </CSSTransition>
           )}
         </TransitionGroup>
@@ -111,9 +111,9 @@ function Navbar() {
         </TransitionGroup>
 
         <NavLinks />
-      </StyledNav>
+      </Nav>
       <SideMenu sideMenuOpen={showSide} toggle={toggleSideMenu} />
-    </StyledHeader>
+    </Header>
   )
 }
 

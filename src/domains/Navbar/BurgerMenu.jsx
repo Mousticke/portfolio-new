@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { transitionAll, breakpoints, transitionHamburger } from '@styles'
 
-const StyledBurgerMenu = styled.div`
+const BurgerContainer = styled.div`
   grid-column: 4;
   display: none;
   justify-content: center;
@@ -21,7 +21,7 @@ const StyledBurgerMenu = styled.div`
   background-color: transparent;
   ${breakpoints.tablet`display: flex;`};
 `
-const StyledBurgerMenuInner = styled.div`
+const BurgerMenuInner = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
@@ -34,7 +34,7 @@ const StyledBurgerMenuInner = styled.div`
   transition: ${transitionAll};
 `
 
-const StyledBurgerMenuLines = styled.div`
+const BurgerMenuLines = styled.div`
   position: absolute;
   width: 2.1rem;
   height: 2px;
@@ -82,11 +82,11 @@ function BurgerMenu({ showSide, toggleSideMenu }) {
     toggleSideMenu()
   }
   return (
-    <StyledBurgerMenu onClick={handleToggleSideMenu}>
-      <StyledBurgerMenuInner showSide={showSide}>
-        <StyledBurgerMenuLines showSide={showSide} />
-      </StyledBurgerMenuInner>
-    </StyledBurgerMenu>
+    <BurgerContainer onClick={handleToggleSideMenu}>
+      <BurgerMenuInner showSide={showSide}>
+        <BurgerMenuLines showSide={showSide} />
+      </BurgerMenuInner>
+    </BurgerContainer>
   )
 }
 
