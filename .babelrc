@@ -13,7 +13,8 @@
                     "@pages": "./src/pages",
                     "@config": "./src/config",
                     "@resources": "./src/resources",
-                    "@utils": "./src/utils"
+                    "@utils": "./src/utils",
+                    "@domains": "./src/domains"
                 }
             }
         ]

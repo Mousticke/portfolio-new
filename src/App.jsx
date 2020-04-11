@@ -3,12 +3,17 @@ import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, GlobalStyle } from '@styles'
 import { SEO } from '@components'
-import Navbar from './domains/Header'
+import { Navbar } from '@domains'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+`
+
+const Wrapper = styled.div`
+  background: ${(props) => props.theme.colors.background.landing};
+  flex: 0 0 100%;
 `
 
 function App() {
@@ -23,13 +28,7 @@ function App() {
         <SEO />
         <GlobalStyle />
         <Navbar />
-        <div
-          id='wrapper'
-          style={{
-            background: `radial-gradient(97.14% 97.14% at 50% 2.86%, #0F1E33 0%, #03070C 98.8%)`,
-            flex: `0 0 100%`,
-          }}
-        >
+        <Wrapper theme={isDarkMode ? themeDark : themeDark} id='wrapper'>
           <main
             style={{
               minHeight: `100vh`,
@@ -73,7 +72,7 @@ function App() {
               Section
             </section>
           </main>
-        </div>
+        </Wrapper>
       </Container>
     </ThemeProvider>
   )

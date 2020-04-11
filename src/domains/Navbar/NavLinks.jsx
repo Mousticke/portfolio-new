@@ -6,7 +6,7 @@ import useMounted from '@hooks/useMounted'
 import { breakpoints, fonts } from '@styles'
 import { HashLink as Link } from 'react-router-hash-link'
 
-const StyledNavLinksWrapper = styled.div`
+const NavLinksWrapper = styled.div`
   grid-column: 3;
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@ const StyledNavLinksWrapper = styled.div`
   justify-content: center;
   `};
 `
-const StyledNavList = styled.ol`
+const NavList = styled.ol`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +25,7 @@ const StyledNavList = styled.ol`
   margin: 0;
   list-style: none;
 `
-const StyledNavListItem = styled.li`
+const NavListItem = styled.li`
   margin: 0 0.8rem;
   position: relative;
   font-size: ${fonts.size.navbar.default};
@@ -37,7 +37,7 @@ const StyledNavListItem = styled.li`
     font-size: ${fonts.size.navbar.default};
   }
 `
-const StyledNavListLink = styled(Link)`
+const NavLinkItem = styled(Link)`
   padding: 12px 10px;
   &:hover,
   &:focus {
@@ -48,23 +48,23 @@ const StyledNavListLink = styled(Link)`
 function NavLinks() {
   const { isMounted } = useMounted()
   return (
-    <StyledNavLinksWrapper>
-      <StyledNavList>
+    <NavLinksWrapper>
+      <NavList>
         <TransitionGroup component={null}>
           {isMounted &&
             navLinks &&
             navLinks.map(({ id, url, name }, i) => (
               <CSSTransition key={id} classNames='fadedown' timeout={1000}>
-                <StyledNavListItem key={id} style={{ transitionDelay: `${i * 100}ms` }}>
-                  <StyledNavListLink aria-label={name} to={url}>
+                <NavListItem key={id} style={{ transitionDelay: `${i * 100}ms` }}>
+                  <NavLinkItem aria-label={name} to={url}>
                     {name}
-                  </StyledNavListLink>
-                </StyledNavListItem>
+                  </NavLinkItem>
+                </NavListItem>
               </CSSTransition>
             ))}
         </TransitionGroup>
-      </StyledNavList>
-    </StyledNavLinksWrapper>
+      </NavList>
+    </NavLinksWrapper>
   )
 }
 

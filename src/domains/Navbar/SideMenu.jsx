@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { HashLink as Link } from 'react-router-hash-link'
 import { transitionAll, breakpoints, fonts } from '@styles'
 
-const StyledSideContainer = styled.div`
+const SideContainer = styled.div`
   position: fixed;
   top: 0;
   bottom: 0;
@@ -21,7 +21,7 @@ const StyledSideContainer = styled.div`
   ${breakpoints.tablet`display: block;`};
 `
 
-const StyledAside = styled.aside`
+const Aside = styled.aside`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +38,7 @@ const StyledAside = styled.aside`
   ${breakpoints.tiny`padding: 10px;`};
 `
 
-const StyledNavLinks = styled.nav`
+const NavLinks = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,14 +48,14 @@ const StyledNavLinks = styled.nav`
   color: ${(props) => props.theme.colors.navbar.text};
 `
 
-const StyledList = styled.ol`
+const NavList = styled.ol`
   padding: 0;
   margin: 0;
   list-style: none;
   width: 100%;
 `
 
-const StyledListItem = styled.li`
+const NavListItem = styled.li`
   margin: 0 auto 1.1rem;
   position: relative;
   font-size: ${fonts.size.lg};
@@ -74,7 +74,7 @@ const StyledListItem = styled.li`
   }
 `
 
-const NavLink = styled(Link)`
+const NavLinkItem = styled(Link)`
   display: inline-block;
   text-decoration: none;
   text-decoration-skip-ink: auto;
@@ -103,22 +103,22 @@ function SideMenu({ sideMenuOpen, toggle }) {
     }
   }
   return (
-    <StyledSideContainer sideMenuOpen={sideMenuOpen} onClick={handleMenuClick} aria-hidden={!sideMenuOpen}>
-      <StyledAside>
-        <StyledNavLinks>
-          <StyledList>
+    <SideContainer sideMenuOpen={sideMenuOpen} onClick={handleMenuClick} aria-hidden={!sideMenuOpen}>
+      <Aside>
+        <NavLinks>
+          <NavList>
             {navLinks &&
               navLinks.map(({ id, url, name }) => (
-                <StyledListItem key={id}>
-                  <NavLink aria-label={name} to={url}>
+                <NavListItem key={id}>
+                  <NavLinkItem aria-label={name} to={url}>
                     {name}
-                  </NavLink>
-                </StyledListItem>
+                  </NavLinkItem>
+                </NavListItem>
               ))}
-          </StyledList>
-        </StyledNavLinks>
-      </StyledAside>
-    </StyledSideContainer>
+          </NavList>
+        </NavLinks>
+      </Aside>
+    </SideContainer>
   )
 }
 
