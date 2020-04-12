@@ -51,7 +51,7 @@ const NavLinkItem = styled(Link)`
   &.active {
     color: ${(props) => props.theme.colors.link.hover};
     & > span {
-      border: solid 2px #35e8c6 !important;
+      border: 2px solid ${(props) => props.theme.colors.navbar.number}; !important;
     }
   }
 `
