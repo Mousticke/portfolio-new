@@ -86,8 +86,8 @@ function App() {
               Section
             </section>
           </Main>
+          <Footer id='contact'>Hi there</Footer>
         </Wrapper>
-        <Footer id='contact' />
       </Container>
     </ThemeProvider>
   )

@@ -1,10 +1,11 @@
+/* eslint-disable no-plusplus */
 import React from 'react'
 import navLinks from '@config/navLinks'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import styled from 'styled-components'
 import useMounted from '@hooks/useMounted'
 import { breakpoints, fonts } from '@styles'
-import { HashLink as Link } from 'react-router-hash-link'
+import { NavHashLink as Link } from 'react-router-hash-link'
 
 const NavLinksWrapper = styled.div`
   grid-area: navLinks;
@@ -47,8 +48,11 @@ const NavListItem = styled.li`
 const NavLinkItem = styled(Link)`
   padding: 1em 0;
   &:hover,
-  &:focus {
+  &.active {
     color: ${(props) => props.theme.colors.link.hover};
+    & > span {
+      border: solid 2px #35e8c6 !important;
+    }
   }
 `
 
@@ -79,6 +83,7 @@ const Circle = styled.span`
 
 function NavLinks() {
   const { isMounted } = useMounted()
+
   return (
     <NavLinksWrapper>
       <NavList>
@@ -88,7 +93,17 @@ function NavLinks() {
             navLinks.map(({ id, url, name }, i) => (
               <CSSTransition key={id} classNames='fadedown' timeout={1000}>
                 <NavListItem key={id} style={{ transitionDelay: `${i * 100}ms` }}>
-                  <NavLinkItem aria-label={name} to={url}>
+                  <NavLinkItem
+                    exact
+                    className='nav-link'
+                    smooth
+                    aria-label={name}
+                    to={url}
+                    isActive={(match, location) => {
+                      const link = location.pathname + location.hash
+                      return link === url
+                    }}
+                  >
                     <Circle className={name.toLowerCase()} />
                     {name}
                   </NavLinkItem>
