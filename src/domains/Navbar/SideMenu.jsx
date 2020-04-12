@@ -46,6 +46,10 @@ const NavLinks = styled.nav`
   flex-direction: column;
   text-align: center;
   color: ${(props) => props.theme.colors.navbar.text};
+  transform: ${(props) => (props.sideMenuOpen ? `rotateX(0deg)` : `rotateX(-70deg)`)};
+  opacity: ${(props) => (props.sideMenuOpen ? `1` : `0`)};
+  transition: ${transitionAll};
+  transition-duration: 500ms;
 `
 
 const NavList = styled.ol`
@@ -105,7 +109,7 @@ function SideMenu({ sideMenuOpen, toggle }) {
   return (
     <SideContainer sideMenuOpen={sideMenuOpen} onClick={handleMenuClick} aria-hidden={!sideMenuOpen}>
       <Aside>
-        <NavLinks>
+        <NavLinks sideMenuOpen={sideMenuOpen}>
           <NavList>
             {navLinks &&
               navLinks.map(({ id, url, name }) => (

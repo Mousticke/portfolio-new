@@ -17,12 +17,14 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  flex-direction: column;
   top: 0;
-  padding: 0 3rem;
-  width: 100%;
-  height: 5rem;
+  padding: 0 3em;
+  width: 12em;
+  height: 100vh;
   z-index: 11;
   color: ${(props) => props.theme.colors.navbar.text};
+  background-color: ${(props) => props.theme.colors.navbar.inner};
   transition: ${transitionAll};
   filter: none !important;
   pointer-events: auto !important;
@@ -30,29 +32,42 @@ const Header = styled.header`
   ${breakpoints.desktop`
   padding: 0 2.5rem;`};
   ${breakpoints.tablet`
-  padding: 0 1.6rem;`};
+  padding: 0 1.6rem; width: 100%;  height: 5rem; background-color: transparent;`};
 `
 const Nav = styled.nav`
   display: grid;
-  grid-template-columns: 3rem minmax(auto, 1fr) 4rem;
-  grid-auto-flow: row;
-  grid-template-areas: 'logo navLinks hamburger';
+  grid-template-rows: 10rem 1fr 10rem;
+  grid-template-columns: 12em;
+  grid-template-areas:
+    'logo'
+    'navLinks'
+    'hamburger';
   align-items: center;
   position: relative;
-  width: 100%;
+  height: 100vh;
   z-index: 12;
   font-family: ${fonts.style.navbar};
   font-size: ${fonts.size.navbar.default};
   counter-reset: item 0;
+  ${breakpoints.tablet`
+  height: inherit;
+  width: 100%;
+  grid-template-rows: 1fr;
+  grid-template-columns: 3rem minmax(auto, 1fr) 3rem;
+  grid-template-areas:
+    "logo navLinks hamburger";
+  `};
 `
 
 const Brand = styled.div`
   grid-area: logo;
+  display: flex;
+  justify-content: center;
   a {
     display: block;
     color: ${(props) => props.theme.colors.navbar.brand_color};
-    width: 42px;
-    height: 42px;
+    width: 100px;
+    height: 100px;
     &:hover,
     &:focus {
       svg {

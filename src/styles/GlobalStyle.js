@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     ${breakpoints.giant`font-size: ${fonts.size.root_giant};`};
     ${breakpoints.bigDesktop`font-size: ${fonts.size.root_bigDesktop};`};
     ${breakpoints.desktop`font-size: ${fonts.size.root};`};
-    ${breakpoints.tablet`font-size: ${fonts.size.root_small};`};
+    ${breakpoints.phablet`font-size: ${fonts.size.root_small};`};
   }
   *,
   *:before,
@@ -59,12 +59,20 @@ const GlobalStyle = createGlobalStyle`
   .App {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 1fr . 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 12rem auto ;
+    grid-template-areas: 
+      "header main"
+      "header main"
+      "header footer";
+    ${breakpoints.tablet`
+    grid-template-rows: 1fr auto;
     grid-template-columns: 100%;
     grid-template-areas: 
       "header"
       "main"
-      "footer"
+      "footer";
+    `}
   }
 
   h1,
