@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import styled from 'styled-components'
 import { HashLink as Link } from 'react-router-hash-link'
@@ -24,7 +25,7 @@ const Header = styled.header`
   height: 100vh;
   z-index: 11;
   color: ${(props) => props.theme.colors.navbar.text};
-  background-color: ${(props) => props.theme.colors.navbar.inner};
+  background: ${(props) => props.theme.colors.navbar.inner};
   transition: ${transitionAll};
   filter: none !important;
   pointer-events: auto !important;
@@ -32,7 +33,11 @@ const Header = styled.header`
   ${breakpoints.desktop`
   padding: 0 2.5rem;`};
   ${breakpoints.tablet`
-  padding: 0 1.6rem; width: 100%;  height: 5rem; background-color: transparent;`};
+  padding: 0 1.6rem;
+  width: 100%;
+  height: 5rem;
+  background: ${(props) => (props.isTop ? `transparent` : props.theme.colors.navbar.inner_scrolled)}`};
+  box-shadow: ${(props) => (props.isTop ? `none` : `0 1em 1em -1em ${props.theme.colors.navbar.box_shadow}`)};
 `
 const Nav = styled.nav`
   display: grid;
@@ -49,10 +54,11 @@ const Nav = styled.nav`
   font-family: ${fonts.style.navbar};
   font-size: ${fonts.size.navbar.default};
   counter-reset: item 0;
+  transition: ${transitionAll};
   ${breakpoints.tablet`
   height: inherit;
   width: 100%;
-  grid-template-rows: 1fr;
+  grid-template-rows: 5rem;
   grid-template-columns: 3rem minmax(auto, 1fr) 3rem;
   grid-template-areas:
     "logo navLinks hamburger";
@@ -82,7 +88,7 @@ const Brand = styled.div`
   }
 `
 
-function Navbar() {
+function Navbar({ isTop }) {
   const [showSide, setShowSide] = useState(false)
 
   const { isMounted } = useMounted()
@@ -104,7 +110,7 @@ function Navbar() {
   }, [showSide])
 
   return (
-    <Header>
+    <Header isTop={isTop}>
       <Helmet>
         <body className={showSide ? 'blur' : ''} />
       </Helmet>
@@ -134,6 +140,10 @@ function Navbar() {
       <SideMenu sideMenuOpen={showSide} toggle={toggleSideMenu} />
     </Header>
   )
+}
+
+Navbar.propTypes = {
+  isTop: PropTypes.bool.isRequired,
 }
 
 export default Navbar

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, GlobalStyle } from '@styles'
 import { SEO, Main } from '@components'
 import { Navbar } from '@domains'
+import { throttle } from '@utils'
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +27,18 @@ const Footer = styled.footer`
 function App() {
   const stored = localStorage.getItem('isDarkMode')
   const [isDarkMode] = useState(stored === 'true')
+  const [isTop, setIsTop] = useState(true)
+  useEffect(() => {
+    window.addEventListener(
+      'scroll',
+      throttle(() => {
+        const topScroll = window.scrollY < 100
+        if (topScroll !== isTop) {
+          setIsTop(topScroll)
+        }
+      })
+    )
+  }, [isTop])
   return (
     <ThemeProvider theme={isDarkMode ? themeDark : themeDark}>
       <Helmet>
@@ -34,7 +47,7 @@ function App() {
       <Container className='App'>
         <SEO />
         <GlobalStyle />
-        <Navbar />
+        <Navbar isTop={isTop} />
         <Wrapper theme={isDarkMode ? themeDark : themeDark} id='wrapper'>
           <Main>
             <section
@@ -74,7 +87,7 @@ function App() {
             </section>
           </Main>
         </Wrapper>
-        <Footer />
+        <Footer id='contact' />
       </Container>
     </ThemeProvider>
   )
