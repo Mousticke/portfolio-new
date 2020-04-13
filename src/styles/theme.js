@@ -29,6 +29,7 @@ export const themeDark = {
     general: {
       linkNumber: '#00E0D8',
       greeting: '#00E0D8',
+      default: '#08121F',
     },
     background: {
       default: '#08121F',
