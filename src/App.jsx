@@ -42,7 +42,7 @@ function App() {
   return (
     <ThemeProvider theme={isDarkMode ? themeDark : themeDark}>
       <Helmet>
-        <body className={isDarkMode ? 'dark-mode' : 'dark-mode'} />
+        <body data-theme={isDarkMode ? 'dark-mode' : 'dark-mode'} />
       </Helmet>
       <Container className='App'>
         <SEO />

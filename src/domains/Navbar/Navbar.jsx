@@ -114,7 +114,7 @@ function Navbar({ isTop }) {
       <Helmet>
         <body className={showSide ? 'blur' : ''} />
       </Helmet>
-      <Nav>
+      <Nav className='navbar'>
         <TransitionGroup component={null}>
           {isMounted && (
             <CSSTransition classNames='fade' timeout={1000}>

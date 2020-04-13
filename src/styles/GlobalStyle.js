@@ -29,14 +29,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     line-height: ${fonts.line_height};
     font-family: ${fonts.style.sans_serif};
-    
-    &.dark-mode{
-      background-color:${themeDark.colors.background.default}
-    }
-
-    &.light-mode{
-      background-color:${themeLight.colors.background.default}
-    }
+   
     &.blur {
       overflow: hidden;
       .App > #wrapper > * {
@@ -46,6 +39,14 @@ const GlobalStyle = createGlobalStyle`
         user-select: none;
       }
     }
+  }
+  
+  body[data-theme='dark-mode']{
+      background-color:${themeDark.colors.background.default}
+  }
+
+  body[data-theme='light-mode']{
+    background-color:${themeLight.colors.background.default}
   }
 
   nav{
