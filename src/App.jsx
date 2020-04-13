@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
-import { themeDark, GlobalStyle } from '@styles'
+import { themeDark, themeLight, GlobalStyle } from '@styles'
 import { SEO, Main, Switch } from '@components'
 import { Navbar } from '@domains'
 import { throttle } from '@utils'
@@ -41,21 +41,21 @@ function App() {
   }, [isTop])
 
   const handleThemeMode = () => {
-    localStorage.setItem('isDarkMode', !isDarkMode)
     setIsDarkMode(!isDarkMode)
+    localStorage.setItem('isDarkMode', !isDarkMode)
   }
 
   return (
-    <ThemeProvider theme={isDarkMode ? themeDark : themeDark}>
+    <ThemeProvider theme={isDarkMode ? themeDark : themeLight}>
       <Helmet>
-        <body data-theme={isDarkMode ? 'dark-mode' : 'dark-mode'} />
+        <body data-theme={isDarkMode ? 'dark-mode' : 'light-mode'} />
       </Helmet>
       <Container className='App'>
         <SEO />
         <GlobalStyle />
         <Switch themeMode={handleThemeMode} isDarkMode={isDarkMode} />
         <Navbar isTop={isTop} />
-        <Wrapper theme={isDarkMode ? themeDark : themeDark} id='wrapper'>
+        <Wrapper theme={isDarkMode ? themeDark : themeLight} id='wrapper'>
           <Main>
             <section
               id='home'
