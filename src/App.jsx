@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReducer, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
-import { themeDark, themeLight, GlobalStyle } from '@styles'
+import { themeDark, themeLight, GlobalStyle, sizes } from '@styles'
 import { SEO, Main } from '@components'
 import { Navbar } from '@domains'
 import { throttle } from '@utils'
@@ -57,7 +57,7 @@ function App() {
     window.addEventListener(
       'scroll',
       throttle(() => {
-        const topScroll = window.scrollY < 100
+        const topScroll = window.scrollY < 100 && window.innerWidth <= sizes.tablet.max
         /* const projectScroll =
           window.scrollY >= sectionRefProject.current.offsetTop * 0.9 &&
           window.scrollY < sectionRefProject.current.clientHeight + sectionRefProject.current.offsetTop
