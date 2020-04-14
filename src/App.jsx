@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect, useReducer, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, themeLight, GlobalStyle } from '@styles'
@@ -51,11 +51,17 @@ export const ThemeContext = React.createContext(null)
 function App() {
   const [theme, dispatch] = useReducer(reducer, initialState)
   const [isTop, setIsTop] = useState(true)
+  // const [projectSection, setProjectSection] = useState(true)
+  const sectionRefProject = useRef(null)
   useEffect(() => {
     window.addEventListener(
       'scroll',
       throttle(() => {
         const topScroll = window.scrollY < 100
+        /* const projectScroll =
+          window.scrollY >= sectionRefProject.current.offsetTop * 0.9 &&
+          window.scrollY < sectionRefProject.current.clientHeight + sectionRefProject.current.offsetTop
+        setProjectSection(projectScroll) */
         if (topScroll !== isTop) {
           setIsTop(topScroll)
         }
@@ -103,6 +109,7 @@ function App() {
               Section
             </section>
             <section
+              ref={sectionRefProject}
               id='projects'
               style={{
                 background: `#0C192A`,

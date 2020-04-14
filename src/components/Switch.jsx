@@ -55,7 +55,7 @@ const SwitchLabel = styled.label`
       height: 24px;
       width: 24px;
       left: 0em;
-      top: -0.2em;
+      top: -0.25em;
       background-color: white;
       background-image: url(${sunny});
       background-repeat: no-repeat;

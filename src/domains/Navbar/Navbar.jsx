@@ -74,8 +74,7 @@ const Brand = styled.div`
   a {
     display: block;
     color: ${(props) => props.theme.colors.navbar.brand_color};
-    width: 100px;
-    height: 100px;
+    width: 5rem;
     &:hover,
     &:focus {
       svg {
@@ -93,7 +92,7 @@ const Brand = styled.div`
 function Navbar({ isTop }) {
   const [showSide, setShowSide] = useState(false)
 
-  const { isMounted } = useMounted()
+  const isMounted = useMounted()
 
   const toggleSideMenu = () => {
     setShowSide(!showSide)
@@ -118,26 +117,22 @@ function Navbar({ isTop }) {
       </Helmet>
       <Nav className='navbar'>
         <TransitionGroup component={null}>
-          {isMounted && (
-            <CSSTransition classNames='fade' timeout={1000}>
-              <Brand>
-                <Link to='#home' aria-label='home'>
-                  <BrandIcon />
-                </Link>
-              </Brand>
-            </CSSTransition>
-          )}
+          <CSSTransition in={isMounted.current} classNames='fade' timeout={1000} appear unmountOnExit>
+            <Brand>
+              <Link to='#home' aria-label='home'>
+                <BrandIcon />
+              </Link>
+            </Brand>
+          </CSSTransition>
         </TransitionGroup>
 
         <TransitionGroup component={null}>
-          {isMounted && (
-            <CSSTransition classNames='fade' timeout={1000}>
-              <BurgerMenu showSide={showSide} toggleSideMenu={toggleSideMenu} />
-            </CSSTransition>
-          )}
+          <CSSTransition in={isMounted.current} classNames='fade' timeout={1000} appear unmountOnExit>
+            <BurgerMenu showSide={showSide} toggleSideMenu={toggleSideMenu} />
+          </CSSTransition>
         </TransitionGroup>
 
-        <NavLinks />
+        <NavLinks isMounted={isMounted.current} />
         <Switch />
       </Nav>
       <SideMenu sideMenuOpen={showSide} toggle={toggleSideMenu} />

@@ -93,4 +93,4 @@ BurgerMenu.propTypes = {
   toggleSideMenu: PropTypes.func.isRequired,
 }
 
-export default BurgerMenu
+export default React.memo(BurgerMenu)

@@ -1,9 +1,9 @@
 /* eslint-disable no-plusplus */
 import React from 'react'
+import PropTypes from 'prop-types'
 import navLinks from '@config/navLinks'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import styled from 'styled-components'
-import useMounted from '@hooks/useMounted'
 import { breakpoints, fonts } from '@styles'
 import { NavHashLink as Link } from 'react-router-hash-link'
 
@@ -81,40 +81,39 @@ const Circle = styled.span`
   `};
 `
 
-function NavLinks() {
-  const { isMounted } = useMounted()
-
+function NavLinks({ isMounted }) {
   return (
     <NavLinksWrapper>
-      <NavList>
-        <TransitionGroup component={null}>
-          {isMounted &&
-            navLinks &&
-            navLinks.map(({ id, url, name }, i) => (
-              <CSSTransition key={id} classNames='fadedown' timeout={1000}>
-                <NavListItem key={id} style={{ transitionDelay: `${i * 100}ms` }}>
-                  <NavLinkItem
-                    exact
-                    className='nav-link'
-                    smooth
-                    aria-label={name}
-                    to={url}
-                    isActive={(match, location) => {
-                      const link = location.pathname + location.hash
-                      return link === url
-                    }}
-                  >
-                    <Circle className={name.toLowerCase()} />
-                    {name}
-                  </NavLinkItem>
-                </NavListItem>
-              </CSSTransition>
-            ))}
-        </TransitionGroup>
-      </NavList>
+      <TransitionGroup component={NavList}>
+        {navLinks &&
+          navLinks.map(({ id, url, name }, i) => (
+            <CSSTransition in={isMounted} key={id} classNames='fadedown' timeout={1000} appear unmountOnExit>
+              <NavListItem key={id} style={{ transitionDelay: `${i * 100}ms` }}>
+                <NavLinkItem
+                  exact
+                  className='nav-link'
+                  smooth
+                  aria-label={name}
+                  to={url}
+                  isActive={(match, location) => {
+                    const link = location.pathname + location.hash
+                    return link === url
+                  }}
+                >
+                  <Circle className={name.toLowerCase()} />
+                  {name}
+                </NavLinkItem>
+              </NavListItem>
+            </CSSTransition>
+          ))}
+      </TransitionGroup>
       <Border />
     </NavLinksWrapper>
   )
 }
 
-export default NavLinks
+NavLinks.propTypes = {
+  isMounted: PropTypes.bool.isRequired,
+}
+
+export default React.memo(NavLinks)
