@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, themeLight, GlobalStyle } from '@styles'
-import { SEO, Main, Switch } from '@components'
+import { SEO, Main } from '@components'
 import { Navbar } from '@domains'
 import { throttle } from '@utils'
 
@@ -24,9 +24,32 @@ const Footer = styled.footer`
   height: 3rem;
 `
 
+const initialState = {
+  isDark: localStorage.getItem('isDarkMode') === 'true',
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'DARK':
+      localStorage.setItem('isDarkMode', action.payload)
+      return {
+        ...initialState,
+        isDark: action.payload,
+      }
+    case 'LIGHT':
+      localStorage.setItem('isDarkMode', action.payload)
+      return {
+        ...initialState,
+        isDark: action.payload,
+      }
+    default:
+      return initialState
+  }
+}
+export const ThemeContext = React.createContext(null)
+
 function App() {
-  const stored = localStorage.getItem('isDarkMode')
-  const [isDarkMode, setIsDarkMode] = useState(stored === 'true')
+  const [theme, dispatch] = useReducer(reducer, initialState)
   const [isTop, setIsTop] = useState(true)
   useEffect(() => {
     window.addEventListener(
@@ -40,22 +63,18 @@ function App() {
     )
   }, [isTop])
 
-  const handleThemeMode = () => {
-    setIsDarkMode(!isDarkMode)
-    localStorage.setItem('isDarkMode', !isDarkMode)
-  }
-
   return (
-    <ThemeProvider theme={isDarkMode ? themeDark : themeLight}>
+    <ThemeProvider theme={theme.isDark ? themeDark : themeLight}>
       <Helmet>
-        <body data-theme={isDarkMode ? 'dark-mode' : 'light-mode'} />
+        <body data-theme={theme.isDark ? 'dark-mode' : 'light-mode'} />
       </Helmet>
       <Container className='App'>
         <SEO />
         <GlobalStyle />
-        <Switch themeMode={handleThemeMode} isDarkMode={isDarkMode} />
-        <Navbar isTop={isTop} />
-        <Wrapper theme={isDarkMode ? themeDark : themeLight} id='wrapper'>
+        <ThemeContext.Provider value={{ theme, dispatch }}>
+          <Navbar isTop={isTop} />
+        </ThemeContext.Provider>
+        <Wrapper theme={theme.isDark ? themeDark : themeLight} id='wrapper'>
           <Main>
             <section
               id='home'

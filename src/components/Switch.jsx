@@ -1,19 +1,23 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import night from '@resources/night.png'
 import sunny from '@resources/sunny.png'
-import { breakpoints, transitionAll } from '@styles'
+import { transitionAll } from '@styles'
+import { ThemeContext } from '../App'
 
-const SwitchInput = styled.label`
-  position: fixed;
-  right: 1rem;
-  top: 1.7rem;
+const SwitchContainer = styled.div`
+  display: flex;
+  position: relative;
+  grid-area: theming;
+  justify-content: center;
+`
+
+const SwitchLabel = styled.label`
+  position: relative;
   width: 40px;
   height: 16px;
   z-index: 100;
   transition: ${transitionAll};
-  ${breakpoints.tablet`right:6rem; top:2rem;`};
   & > input {
     opacity: 0;
     width: 0;
@@ -62,18 +66,24 @@ const SwitchInput = styled.label`
   }
 `
 
-function Switch({ themeMode, isDarkMode }) {
-  return (
-    <SwitchInput htmlFor='theme' className='switch'>
-      <input id='theme' type='checkbox' checked={isDarkMode} onChange={themeMode} />
-      <span className='slider round' />
-    </SwitchInput>
-  )
-}
+function Switch() {
+  const { theme, dispatch } = useContext(ThemeContext)
 
-Switch.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
-  themeMode: PropTypes.func.isRequired,
+  return (
+    <SwitchContainer>
+      <span style={{ paddingRight: `1rem` }}>Light</span>
+      <SwitchLabel htmlFor='theme' className='switch'>
+        <input
+          id='theme'
+          type='checkbox'
+          checked={theme.isDark}
+          onChange={() => dispatch({ type: theme.isDark ? 'LIGHT' : 'DARK', payload: !theme.isDark })}
+        />
+        <span className='slider round' />
+      </SwitchLabel>
+      <span style={{ paddingLeft: `1rem` }}>Dark</span>
+    </SwitchContainer>
+  )
 }
 
 export default Switch
