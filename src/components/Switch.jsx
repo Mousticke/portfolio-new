@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import night from '@resources/night.png'
 import sunny from '@resources/sunny.png'
-import { transitionAll } from '@styles'
+import { transitionAll, breakpoints } from '@styles'
 import { ThemeContext } from '../App'
 
 const SwitchContainer = styled.div`
@@ -10,6 +10,9 @@ const SwitchContainer = styled.div`
   position: relative;
   grid-area: theming;
   justify-content: center;
+  ${breakpoints.tablet`
+  justify-content: flex-end; 
+  padding-right:2em;`}
 `
 
 const SwitchLabel = styled.label`

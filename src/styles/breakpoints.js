@@ -16,7 +16,7 @@ export const breakpoints = Object.keys(sizes).reduce((accumulator, label) => {
   // const emSizeMin = sizes[label].min / 16
   const emSizeMax = sizes[label].max / 16
   accumulator[label] = (...args) => css`
-    @media (max-width: ${emSizeMax}em) {
+    @media (max-width: ${emSizeMax}rem) {
       ${css(...args)};s
     }
   `

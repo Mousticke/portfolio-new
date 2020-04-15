@@ -47,8 +47,7 @@ const Nav = styled.nav`
   grid-template-areas:
     'logo'
     'navLinks'
-    'theming'
-    'hamburger';
+    'theming';
   align-items: center;
   position: relative;
   height: 100vh;
@@ -61,9 +60,9 @@ const Nav = styled.nav`
   height: inherit;
   width: 100%;
   grid-template-rows: 5rem;
-  grid-template-columns: 3rem minmax(auto, 1fr) 1fr 3rem;
+  grid-template-columns: 3rem minmax(auto, 1fr) 3rem;
   grid-template-areas:
-    "logo navLinks theming hamburger";
+    "logo theming hamburger";
   `};
 `
 

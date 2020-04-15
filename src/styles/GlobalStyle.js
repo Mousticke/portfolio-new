@@ -9,10 +9,17 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     width: 100%;
     font-size: ${fonts.size.root_giant};
-    ${breakpoints.giant`font-size: ${fonts.size.root_giant};`};
-    ${breakpoints.bigDesktop`font-size: ${fonts.size.root_bigDesktop};`};
-    ${breakpoints.desktop`font-size: ${fonts.size.root};`};
-    ${breakpoints.phablet`font-size: ${fonts.size.root_small};`};
+    /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
+    -webkit-text-size-adjust: ${fonts.size.root_giant}; 
+    -ms-text-size-adjust: ${fonts.size.root_giant}; 
+    ${breakpoints.giant`font-size: ${fonts.size.root_giant}; -webkit-text-size-adjust: ${fonts.size.root_giant}; 
+    -ms-text-size-adjust: ${fonts.size.root_giant}; `};
+    ${breakpoints.bigDesktop`font-size: ${fonts.size.root_bigDesktop}; -webkit-text-size-adjust: ${fonts.size.root_bigDesktop}; 
+    -ms-text-size-adjust: ${fonts.size.root_bigDesktop}; `};
+    ${breakpoints.desktop`font-size: ${fonts.size.root}; -webkit-text-size-adjust: ${fonts.size.root}; 
+    -ms-text-size-adjust: ${fonts.size.root}; `};
+    ${breakpoints.phablet`font-size: ${fonts.size.root_small}; -webkit-text-size-adjust: ${fonts.size.root_small}; 
+    -ms-text-size-adjust: ${fonts.size.root_small}; `};
   }
   *,
   *:before,
@@ -83,7 +90,7 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     font-weight: ${fonts.weight.headers};
-    margin: 0 0 10px 0;
+    margin: 0.7rem 0;
   }
 
   svg {
@@ -91,6 +98,9 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     fill: currentColor;
     vertical-align: middle;
+    &:not(:root) {
+    overflow: hidden;
+}
   }
 
   a {
@@ -101,9 +111,15 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     transition: ${transitionAll};
     cursor: pointer;
+    &:hover, &:active{
+      outline:0
+    }
   }
 
-  
+  img {
+    border: 0; /* Removes border when inside 'a' element in IE6/7/8/9 */
+    -ms-interpolation-mode: bicubic; /* Improves image quality when scaled in IE7 */
+}
 
   ${transition};
 `
