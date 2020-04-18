@@ -134,6 +134,7 @@ const Button = React.forwardRef(
           aria-label={props.ariaLabel}
           href={props.href}
           target='_blank'
+          rel='noreferrer noopener'
         >
           {children}
         </StyledAnchor>

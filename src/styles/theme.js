@@ -11,16 +11,16 @@ export const themeLight = {
     general: {
       linkNumber: '#00E0D8',
       greeting: '#00E0D8',
-      default: '#c7c7c7',
+      default: '#08121F',
     },
     background: {
-      default: '#c7c7c7',
-      section_default: '#b6b7b9',
-      landing: 'radial-gradient(97.14% 97.14% at 50% 2.86%,#ffffff 0%,#c3c8d6 98.8%);',
+      default: '#08121F',
+      section_default: '#0C192A',
+      landing: 'radial-gradient(97.14% 97.14% at 50% 2.86%, #0F1E33 0%, #03070C 98.8%)',
     },
     navbar: {
-      inner: '#b6b7b9',
-      text: '#000',
+      inner: '#151F2D',
+      text: '#fff',
       text_hover: '#00E0D8',
       burger_lines: '#00E0D8',
       burger_box: '#00e0d840',
