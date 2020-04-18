@@ -40,7 +40,7 @@ const Aside = styled.aside`
   font-family: ${fonts.style.navbar};
   box-shadow: 16px 0px 30px -17px ${(props) => props.theme.colors.navbar.box_shadow};
   ${breakpoints.tablet`padding: 2em;`};
-  ${breakpoints.tiny`padding: 1empx;`};
+  ${breakpoints.tiny`padding: 1em;`};
 `
 
 const NavLinks = styled.nav`
