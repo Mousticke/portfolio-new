@@ -43,6 +43,7 @@ export const themeLight = {
     text: {
       default: '#9fa4b3',
       heading: '#fff',
+      quote_author:'#6c757d',
     },
   },
 }
@@ -92,6 +93,7 @@ export const themeDark = {
     text: {
       default: '#9fa4b3',
       heading: '#fff',
+      quote_author:'#6c757d',
     },
   },
 }

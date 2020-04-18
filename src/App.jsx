@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, themeLight, GlobalStyle, sizes } from '@styles'
 import { SEO, Main } from '@components'
-import { Navbar } from '@domains'
+import { Navbar, Landing } from '@domains'
 import { throttle } from '@utils'
 
 const Container = styled.div`
@@ -22,6 +22,18 @@ const Footer = styled.footer`
   background: red;
   flex: 0 0 100%;
   height: 3rem;
+`
+
+const Section = styled.section`
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: ${(props) => (props.background ? props.theme.colors.background.section_default : `inherit`)};
+  color: ${(props) => props.theme.colors.text.default};
 `
 
 const initialState = {
@@ -82,42 +94,18 @@ function App() {
         </ThemeContext.Provider>
         <Wrapper theme={theme.isDark ? themeDark : themeLight} id='wrapper'>
           <Main>
-            <section
-              id='home'
-              style={{
-                minHeight: `100vh`,
-              }}
-            >
+            <Section id='home'>
+              <Landing />
+            </Section>
+            <Section id='about' background>
               Section
-            </section>
-            <section
-              id='about'
-              style={{
-                background: `#0C192A`,
-                minHeight: `100vh`,
-              }}
-            >
+            </Section>
+            <Section id='experience' background>
               Section
-            </section>
-            <section
-              id='experience'
-              style={{
-                background: `#0C192A`,
-                minHeight: `100vh`,
-              }}
-            >
+            </Section>
+            <Section ref={sectionRefProject} id='projects' background>
               Section
-            </section>
-            <section
-              ref={sectionRefProject}
-              id='projects'
-              style={{
-                background: `#0C192A`,
-                minHeight: `100vh`,
-              }}
-            >
-              Section
-            </section>
+            </Section>
           </Main>
           <Footer id='contact'>Hi there</Footer>
         </Wrapper>
