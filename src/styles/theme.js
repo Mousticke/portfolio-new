@@ -1,5 +1,13 @@
 export const themeLight = {
   colors: {
+    constant: {
+      facebookButton: '#3f85f4',
+      linkedInButton: '#0177b5',
+      stackOverflowButton: '#ff4e00',
+      githubButton: '#444',
+      twitterButton: '#55acee',
+      instagramButton: '#ff1981',
+    },
     general: {
       linkNumber: '#00E0D8',
       greeting: '#00E0D8',
@@ -41,6 +49,14 @@ export const themeLight = {
 
 export const themeDark = {
   colors: {
+    constant: {
+      facebookButton: '#3f85f4',
+      linkedInButton: '#0177b5',
+      stackOverflowButton: '#ff4e00',
+      githubButton: '#444',
+      twitterButton: '#55acee',
+      instagramButton: '#ff1981',
+    },
     general: {
       linkNumber: '#00E0D8',
       greeting: '#00E0D8',
