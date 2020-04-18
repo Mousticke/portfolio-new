@@ -4,6 +4,7 @@ import navLinks from '@config/navLinks'
 import styled from 'styled-components'
 import { HashLink as Link } from 'react-router-hash-link'
 import { transitionAll, breakpoints, fonts } from '@styles'
+import SocialContainer from './SocialContainer'
 
 const SideContainer = styled.div`
   position: fixed;
@@ -22,11 +23,15 @@ const SideContainer = styled.div`
 `
 
 const Aside = styled.aside`
-  display: flex;
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-areas:
+    'nav'
+    'social';
   justify-content: center;
   align-items: center;
   background: ${(props) => props.theme.colors.navbar.aside};
-  padding: 50px;
+  padding: 5em;
   width: 100vw;
   height: 100%;
   position: relative;
@@ -34,11 +39,12 @@ const Aside = styled.aside`
   margin-left: auto;
   font-family: ${fonts.style.navbar};
   box-shadow: 16px 0px 30px -17px ${(props) => props.theme.colors.navbar.box_shadow};
-  ${breakpoints.tablet`padding: 25px;`};
-  ${breakpoints.tiny`padding: 10px;`};
+  ${breakpoints.tablet`padding: 2em;`};
+  ${breakpoints.tiny`padding: 1empx;`};
 `
 
 const NavLinks = styled.nav`
+  grid-area: nav;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,6 +127,7 @@ function SideMenu({ sideMenuOpen, toggle }) {
               ))}
           </NavList>
         </NavLinks>
+        <SocialContainer />
       </Aside>
     </SideContainer>
   )

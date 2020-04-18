@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
 import { HashLink as Link } from 'react-router-hash-link'
 import { transitionAll, breakpoints, fonts, sizes } from '@styles'
 import useMounted from '@hooks/useMounted'
 import Helmet from 'react-helmet'
 import { throttle } from '@utils'
-import { Switch, Button } from '@components'
-import { FaFacebookF, FaGithub, FaStackOverflow, FaLinkedinIn, FaInstagram } from 'react-icons/fa'
+import { Switch } from '@components'
 import BrandIcon from './BrandIcon'
 import SideMenu from './SideMenu'
 import BurgerMenu from './BurgerMenu'
 import NavLinks from './NavLinks'
+import SocialContainer from './SocialContainer'
 
 const Header = styled.header`
   grid-area: header;
@@ -62,32 +62,14 @@ const Nav = styled.nav`
   height: inherit;
   width: 100%;
   grid-template-rows: 5rem;
-  grid-template-columns: 3rem minmax(auto, 1fr) 3rem;
+  grid-template-columns: 3rem minmax(auto, 1fr) 1fr 3rem;
   grid-template-areas:
-    "logo theming hamburger";
+    "logo social theming hamburger";
   `};
 `
 
-const Socialize = styled.div`
-  grid-area: social;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 75%;
-  margin: auto;
-  svg {
-    height: fit-content;
-    width: fit-content;
-    fill: white;
-  }
-  button {
-    &:hover {
-      outline: 0;
-      opacity: 0.8;
-      color: #fff;
-    }
-  }
-  ${breakpoints.tablet`display: none`}
+const SocialGrid = styled.div`
+  ${breakpoints.tablet`display: none;`}
 `
 
 const Brand = styled.div`
@@ -113,8 +95,6 @@ const Brand = styled.div`
 `
 
 function Navbar({ isTop }) {
-  const themeContext = useContext(ThemeContext)
-
   const [showSide, setShowSide] = useState(false)
 
   const isMounted = useMounted()
@@ -156,31 +136,11 @@ function Navbar({ isTop }) {
             <BurgerMenu showSide={showSide} toggleSideMenu={toggleSideMenu} />
           </CSSTransition>
         </TransitionGroup>
-
         <NavLinks isMounted={isMounted.current} />
         <Switch />
-        <Socialize>
-          <Button
-            className='facebookButton'
-            backgroundColor={themeContext.colors.constant.facebookButton}
-            size='xs'
-            shape='rounded'
-          >
-            <FaFacebookF />
-          </Button>
-          <Button backgroundColor={themeContext.colors.constant.githubButton} size='xs' shape='rounded'>
-            <FaGithub />
-          </Button>
-          <Button backgroundColor={themeContext.colors.constant.stackOverflowButton} size='xs' shape='rounded'>
-            <FaStackOverflow />
-          </Button>
-          <Button backgroundColor={themeContext.colors.constant.instagramButton} size='xs' shape='rounded'>
-            <FaInstagram />
-          </Button>
-          <Button backgroundColor={themeContext.colors.constant.linkedInButton} size='xs' shape='rounded'>
-            <FaLinkedinIn />
-          </Button>
-        </Socialize>
+        <SocialGrid>
+          <SocialContainer />
+        </SocialGrid>
       </Nav>
       <SideMenu sideMenuOpen={showSide} toggle={toggleSideMenu} />
     </Header>
