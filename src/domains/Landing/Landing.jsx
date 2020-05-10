@@ -23,26 +23,26 @@ const StyledTypist = styled.div`
 `
 const StyledCitation = styled.div`
   grid-area: citation;
-  blockquote{
-    text-align:center;
+  blockquote {
+    text-align: center;
   }
-  p{
+  p {
     font-size: 0.9rem;
     margin-top: 0;
     margin-bottom: 1rem;
     font-style: italic;
-    &:before{
+    &:before {
       content: open-quote;
     }
-    &:after{
+    &:after {
       content: close-quote;
     }
   }
-  footer{
+  footer {
     font-size: 0.9rem;
-    color: ${props => props.theme.colors.text.quote_author};
-    &:before{
-      content: "\2014\00A0";
+    color: ${(props) => props.theme.colors.text.quote_author};
+    &:before {
+      content: '\2014\00A0';
     }
   }
 `
@@ -63,7 +63,10 @@ function Landing() {
       <StyledTypist>Typist here</StyledTypist>
       <StyledCitation>
         <blockquote>
-          <p>If debugging is the process of removing software bugs, then programming must be the process of putting them in.</p>
+          <p>
+            If debugging is the process of removing software bugs, then programming must be the process of putting them
+            in.
+          </p>
           <footer>Edsger W. Dijkstra</footer>
         </blockquote>
       </StyledCitation>
