@@ -17,12 +17,14 @@ const transitionFunction = {
 }
 
 const transition = css`
+  .fadeup-appear,
   .fadeup-enter {
     opacity: 0.01;
     transform: translateY(20px);
     transition: opacity 300ms ${transitionFunction.transition_ease},
       transform 300ms ${transitionFunction.transition_ease};
   }
+  .fadeup-appear-active,
   .fadeup-enter-active {
     opacity: 1;
     transform: translateY(0);
@@ -30,23 +32,27 @@ const transition = css`
       transform 300ms ${transitionFunction.transition_ease};
   }
 
+  .fadedown-appear,
   .fadedown-enter {
     opacity: 0.01;
     transform: translateY(-20px);
     transition: opacity 300ms ${transitionFunction.transition_ease},
       transform 300ms ${transitionFunction.transition_ease};
   }
+  .fadedown-appear-active,
   .fadedown-enter-active {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 300ms ${transitionFunction.transition_ease},
       transform 300ms ${transitionFunction.transition_ease};
   }
+  .fade-appear,
   .fade-enter {
     opacity: 0.01;
     transition: opacity 500ms ${transitionFunction.transition_ease};
   }
-  .fade-enter-active {
+  .fade-appear-active,
+  .fade-appear-enter {
     opacity: 1;
     transition: opacity 500ms ${transitionFunction.transition_ease};
   }
