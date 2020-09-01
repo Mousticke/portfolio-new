@@ -32,8 +32,8 @@ const Section = styled.section`
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-  background: ${(props) => (props.background ? props.theme.colors.background.section_default : `inherit`)};
   color: ${(props) => props.theme.colors.text.default};
+  padding: 5rem 0;
 `
 
 const initialState = {

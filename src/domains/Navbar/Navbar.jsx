@@ -7,7 +7,6 @@ import { transitionAll, breakpoints, fonts, sizes } from '@styles'
 import useMounted from '@hooks/useMounted'
 import Helmet from 'react-helmet'
 import { throttle } from '@utils'
-import { Switch } from '@components'
 import BrandIcon from './BrandIcon'
 import SideMenu from './SideMenu'
 import BurgerMenu from './BurgerMenu'
@@ -43,12 +42,11 @@ const Header = styled.header`
 `
 const Nav = styled.nav`
   display: grid;
-  grid-template-rows: 10rem 1fr 1fr 10rem;
+  grid-template-rows: 10rem 1fr 10rem;
   grid-template-columns: 12em;
   grid-template-areas:
     'logo'
     'navLinks'
-    'theming'
     'social';
   align-items: center;
   position: relative;
@@ -62,9 +60,9 @@ const Nav = styled.nav`
   height: inherit;
   width: 100%;
   grid-template-rows: 5rem;
-  grid-template-columns: 3rem minmax(auto, 1fr) 1fr 3rem;
+  grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 3rem);
   grid-template-areas:
-    "logo social theming hamburger";
+    "logo social hamburger";
   `};
 `
 
@@ -137,7 +135,6 @@ function Navbar({ isTop }) {
           </CSSTransition>
         </TransitionGroup>
         <NavLinks isMounted={isMounted.current} />
-        <Switch />
         <SocialGrid>
           <SocialContainer />
         </SocialGrid>

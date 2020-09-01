@@ -15,7 +15,7 @@ export const themeLight = {
     },
     background: {
       default: '#08121F',
-      section_default: '#0C192A',
+      // section_default: '#0C192A',
       landing: 'radial-gradient(97.14% 97.14% at 50% 2.86%, #0F1E33 0%, #03070C 98.8%)',
     },
     navbar: {
@@ -43,7 +43,7 @@ export const themeLight = {
     text: {
       default: '#9fa4b3',
       heading: '#fff',
-      quote_author:'#6c757d',
+      quote_author: '#6c757d',
     },
   },
 }
@@ -65,7 +65,7 @@ export const themeDark = {
     },
     background: {
       default: '#08121F',
-      section_default: '#0C192A',
+      // section_default: '#0C192A',
       landing: 'radial-gradient(97.14% 97.14% at 50% 2.86%, #0F1E33 0%, #03070C 98.8%)',
     },
     navbar: {
@@ -93,7 +93,7 @@ export const themeDark = {
     text: {
       default: '#9fa4b3',
       heading: '#fff',
-      quote_author:'#6c757d',
+      quote_author: '#6c757d',
     },
   },
 }
