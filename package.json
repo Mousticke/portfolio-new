@@ -42,11 +42,6 @@
     "test": "react-app-rewired test --passWithNoTests",
     "eject": "react-scripts eject"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,jsx,css,html}": "eslint --fix"
   },
@@ -79,7 +74,8 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "husky": "^4.2.3",
     "prettier": "^2.0.4",
-    "react-app-rewired": "^2.1.5"
+    "react-app-rewired": "^2.1.5",
+    "size-limit": "^4.5.7"
   },
   "author": {
     "name": "Akim Benchiha",
