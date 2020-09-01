@@ -27,6 +27,11 @@
     "styled-components": "^5.0.1",
     "websocket-extensions": "^0.1.4"
   },
+  "size-limit": [
+    {
+      "path": "build/static/**/*.{js,css,svg,woff,woff2,png,ttf,html}"
+    }
+  ],
   "scripts": {
     "format": "eslint . --fix",
     "lint": "eslint src/**/*.jsx src/**/*.js --fix --max-warnings 5",
@@ -37,9 +42,13 @@
     "test": "react-app-rewired test --passWithNoTests",
     "eject": "react-scripts eject"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "*.js": "eslint --fix",
-    "*.jsx": "eslint --fix"
+    "*.{js,jsx,css,html}": "eslint --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -72,11 +81,6 @@
     "prettier": "^2.0.4",
     "react-app-rewired": "^2.1.5"
   },
-  "size-limit": [
-    {
-      "path": "build/static/**/*.{js,css,svg,woff,woff2,png,ttf,html}"
-    }
-  ],
   "author": {
     "name": "Akim Benchiha",
     "email": "akim.benchiha@gmail.com"
