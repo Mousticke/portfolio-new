@@ -60,7 +60,6 @@ export const themeDark = {
     },
     general: {
       linkNumber: '#00E0D8',
-      greeting: '#00E0D8',
       default: '#08121F',
     },
     background: {
@@ -93,6 +92,7 @@ export const themeDark = {
     text: {
       default: '#9fa4b3',
       heading: '#fff',
+      greeting: '#00E0D8',
       quote_author: '#6c757d',
     },
   },

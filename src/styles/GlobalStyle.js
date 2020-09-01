@@ -5,7 +5,7 @@ import { themeDark, themeLight } from './theme'
 import { breakpoints } from './breakpoints'
 
 const GlobalStyle = createGlobalStyle`
-    html {
+  html {
     box-sizing: border-box;
     width: 100%;
     font-size: ${fonts.size.root_giant};
@@ -99,14 +99,33 @@ const GlobalStyle = createGlobalStyle`
     margin: 0.7rem 0;
   }
 
+  h1{
+    font-size: 2.5em;
+  }
+  h2{
+    font-size: 2em;
+  }
+  h3{
+    font-size: 1.75em;
+  }
+  h4{
+    font-size: 1.5em;
+  }
+  h5{
+    font-size: 1.25em;
+  }
+  h6{
+    font-size: 1em;
+  }
+
   svg {
     width: 100%;
     height: 100%;
     fill: currentColor;
     vertical-align: middle;
     &:not(:root) {
-    overflow: hidden;
-}
+      overflow: hidden;
+    }
   }
 
   a {
