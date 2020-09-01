@@ -1,7 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import akim2020 from '@resources/akim2020.jpg'
-import { breakpoints } from '@styles'
+import { breakpoints, transitionAll } from '@styles'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 const StyledIntro = styled.div`
   grid-area: intro;
@@ -19,6 +21,7 @@ const StyledGreeting = styled.h6`
   ${breakpoints.phablet`
   justify-content:center;
   `};
+  transition: ${transitionAll};
 `
 const StyledHeroTitle = styled.h1`
   display: flex;
@@ -38,6 +41,7 @@ const StyledHeroTitle = styled.h1`
   font-size: 1.5rem;
   justify-content:center;
   `};
+  transition: ${transitionAll};
 `
 
 const StyledHeroSubTitle = styled.h1`
@@ -57,6 +61,7 @@ const StyledHeroSubTitle = styled.h1`
   font-size: 1.1rem;
   justify-content:center;
   `};
+  transition: ${transitionAll};
 `
 
 const StyledHero = styled.div`
@@ -70,6 +75,7 @@ const StyledSummary = styled.p`
   font-size: 0.9rem;
   justify-content: center;
   align-items: center;
+  transition: ${transitionAll};
 `
 const StyledCard = styled.div`
   display: flex;
@@ -96,30 +102,52 @@ const StyledImage = styled.img`
   height: auto;
   max-width: 200px;
   border-radius: 50%;
+  transition: ${transitionAll};
 `
 
-function Introduction() {
+function Introduction({ isMounted }) {
   return (
     <StyledIntro>
-      <StyledCardBig>
-        <StyledImage src={akim2020} alt='Akim Benchiha' />
-      </StyledCardBig>
-      <StyledTitles>
-        <StyledGreeting>Hi there, my name is</StyledGreeting>
-        <StyledHeroTitle>Akim Benchiha</StyledHeroTitle>
-        <StyledHeroSubTitle>I am a software engineer</StyledHeroSubTitle>
-      </StyledTitles>
-      <StyledHero>
-        <StyledCard>
+      <TransitionGroup component={StyledCardBig}>
+        <CSSTransition in={isMounted} classNames='fade' timeout={1000} appear unmountOnExit>
           <StyledImage src={akim2020} alt='Akim Benchiha' />
-        </StyledCard>
-        <StyledSummary>
-          Young engineer based in Luxembourg specializing in industrial engineering, front-end development, software
-          development and project management
-        </StyledSummary>
+        </CSSTransition>
+      </TransitionGroup>
+
+      <TransitionGroup component={StyledTitles}>
+        <CSSTransition in={isMounted} classNames='fade' timeout={1000} appear unmountOnExit>
+          <StyledGreeting style={{ transitionDelay: `${100}ms` }}>Hi there, my name is</StyledGreeting>
+        </CSSTransition>
+        <CSSTransition in={isMounted} classNames='fade' timeout={1000} appear unmountOnExit>
+          <StyledHeroTitle style={{ transitionDelay: `${150}ms` }}>Akim Benchiha</StyledHeroTitle>
+        </CSSTransition>
+        <CSSTransition in={isMounted} classNames='fade' timeout={1000} appear unmountOnExit>
+          <StyledHeroSubTitle style={{ transitionDelay: `${180}ms` }}>I am a software engineer</StyledHeroSubTitle>
+        </CSSTransition>
+      </TransitionGroup>
+
+      <StyledHero>
+        <TransitionGroup component={StyledCard}>
+          <CSSTransition in={isMounted} classNames='fade' timeout={1000} appear unmountOnExit>
+            <StyledImage src={akim2020} alt='Akim Benchiha' />
+          </CSSTransition>
+        </TransitionGroup>
+
+        <TransitionGroup component={null}>
+          <CSSTransition in={isMounted} classNames='fade' timeout={1000} appear unmountOnExit>
+            <StyledSummary>
+              Young engineer based in Luxembourg specializing in industrial engineering, front-end development, software
+              development and project management
+            </StyledSummary>
+          </CSSTransition>
+        </TransitionGroup>
       </StyledHero>
     </StyledIntro>
   )
 }
 
-export default Introduction
+Introduction.propTypes = {
+  isMounted: PropTypes.bool.isRequired,
+}
+
+export default React.memo(Introduction)

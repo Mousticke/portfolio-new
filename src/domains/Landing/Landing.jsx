@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { breakpoints } from '@styles'
+import useMounted from '@hooks/useMounted'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import Introduction from './Introduction'
 import TypistIntro from './Typist'
 import Citation from './Citation'
@@ -25,11 +27,19 @@ const StyledGrid = styled.div`
 `
 
 function Landing() {
+  const isMounted = useMounted()
+
   return (
     <StyledGrid>
-      <Introduction />
+      <Introduction isMounted={isMounted.current} />
+
       <TypistIntro />
-      <Citation />
+
+      <TransitionGroup component={null}>
+        <CSSTransition in={isMounted.current} classNames='fade' timeout={1000} appear unmountOnExit>
+          <Citation />
+        </CSSTransition>
+      </TransitionGroup>
     </StyledGrid>
   )
 }
