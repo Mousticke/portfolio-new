@@ -29,7 +29,7 @@
   },
   "scripts": {
     "format": "eslint . --fix",
-    "lint": "eslint src/**/*.jsx src/**/*.js --max-warnings 5",
+    "lint": "eslint src/**/*.jsx src/**/*.js --fix --max-warnings 5",
     "size": "yarn build && size-limit",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "start": "react-app-rewired start",
