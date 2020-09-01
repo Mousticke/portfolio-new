@@ -30,7 +30,7 @@ jobs:
           fail-on-issues: false
           monitor-on-build: false
           severity-threshold: high
-      - run: yarn lint
+      - run: yarn format && yarn lint
       - run: yarn size
       - run: yarn test
       
