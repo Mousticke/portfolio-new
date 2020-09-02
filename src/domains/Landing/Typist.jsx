@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Typist from 'react-typist'
+import { breakpoints } from '@styles'
 
 const StyledTypist = styled.div`
   grid-area: typist;
   display: flex;
+  ${breakpoints.tablet`
   justify-content: center;
+  `};
   .typist {
     &-import,
     &-keyword,
@@ -82,12 +85,12 @@ function TypistIntro() {
           <span className='typist-braces'>{`<`}</span>
           <span className='typist-keyword'>div&nbsp;</span>
           <span className='typist-className'>className=&nbsp;</span>
-          <span className='typist-text'>&quot;d-flex&quot;</span>
+          <span className='typist-text'>&quot;cls&quot;</span>
           <span className='typist-braces'>{`>`}</span>
         </span>
         <div />
         <span className='typist-indent-3'>
-          <span className='typist-text-html'>This is Akim&apos;s Portfolio&nbsp;</span>
+          <span className='typist-text-html'>Akim&apos;s Portfolio&nbsp;</span>
         </span>
         <div />
         <span className='typist-indent-2'>
