@@ -24,7 +24,7 @@
     "react-transition-group": "^4.3.0",
     "react-typist": "^2.0.5",
     "serialize-javascript": "^3.1.0",
-    "styled-components": "^5.0.1",
+    "styled-components": "^5.1.1",
     "websocket-extensions": "^0.1.4"
   },
   "size-limit": [
