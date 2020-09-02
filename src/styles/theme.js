@@ -10,7 +10,6 @@ export const themeLight = {
     },
     general: {
       linkNumber: '#00E0D8',
-      greeting: '#00E0D8',
       default: '#08121F',
     },
     background: {
@@ -34,6 +33,7 @@ export const themeLight = {
     button: {
       inner: 'transparent',
       border: '#00E0D8',
+      text: '#00E0D8',
       hover: 'rgba(0, 224, 216, 0.17)',
     },
     link: {
@@ -43,6 +43,7 @@ export const themeLight = {
     text: {
       default: '#9fa4b3',
       heading: '#fff',
+      greeting: '#00E0D8',
       quote_author: '#6c757d',
     },
   },
@@ -83,6 +84,7 @@ export const themeDark = {
     button: {
       inner: 'transparent',
       border: '#00E0D8',
+      text: '#00E0D8',
       hover: 'rgba(0, 224, 216, 0.17)',
     },
     link: {
