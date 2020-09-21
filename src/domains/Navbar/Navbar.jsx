@@ -136,10 +136,10 @@ function Navbar({ isTop }) {
         </TransitionGroup>
         <NavLinks isMounted={isMounted.current} />
         <SocialGrid>
-          <SocialContainer />
+          <SocialContainer isMounted={isMounted.current} />
         </SocialGrid>
       </Nav>
-      <SideMenu sideMenuOpen={showSide} toggle={toggleSideMenu} />
+      <SideMenu sideMenuOpen={showSide} toggle={toggleSideMenu} isMounted={isMounted.current} />
     </Header>
   )
 }

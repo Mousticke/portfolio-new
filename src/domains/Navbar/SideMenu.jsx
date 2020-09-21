@@ -102,7 +102,7 @@ const NavLinkItem = styled(Link)`
   width: 100%;
 `
 
-function SideMenu({ sideMenuOpen, toggle }) {
+function SideMenu({ sideMenuOpen, toggle, isMounted }) {
   const handleMenuClick = (e) => {
     const { target } = e
     const isLink = target.hasAttribute('href')
@@ -127,7 +127,7 @@ function SideMenu({ sideMenuOpen, toggle }) {
               ))}
           </NavList>
         </NavLinks>
-        <SocialContainer />
+        <SocialContainer isMounted={isMounted} />
       </Aside>
     </SideContainer>
   )
@@ -136,6 +136,7 @@ function SideMenu({ sideMenuOpen, toggle }) {
 SideMenu.propTypes = {
   sideMenuOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
+  isMounted: PropTypes.bool.isRequired,
 }
 
 export default SideMenu

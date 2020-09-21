@@ -27,15 +27,17 @@ const StyledParagraphSummary = styled.p`
 
 function Summary({ isMounted }) {
   return (
-    <TransitionGroup component={SummaryContainer}>
-      <CSSTransition in={isMounted.current} classNames='fadeup' timeout={1000} appear unmountOnExit>
-        <StyledParagraphSummary>
-          Young engineer based in Luxembourg specializing in industrial engineering, front-end development, software
-          development and project management
-        </StyledParagraphSummary>
-      </CSSTransition>
-      <TransitionGroup component={ButtonsContainer}>
-        <CSSTransition in={isMounted.current} classNames='fadeup' timeout={1000} appear unmountOnExit>
+    <SummaryContainer>
+      <TransitionGroup appear component={null}>
+        <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} unmountOnExit>
+          <StyledParagraphSummary>
+            Young engineer based in Luxembourg specializing in industrial engineering, front-end development, software
+            development and project management
+          </StyledParagraphSummary>
+        </CSSTransition>
+      </TransitionGroup>
+      <TransitionGroup appear component={ButtonsContainer}>
+        <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} unmountOnExit>
           <a
             className='boxButton'
             href={`mailto:${metaTag.email}?subject=Contact from your Portfolio`}
@@ -45,13 +47,13 @@ function Summary({ isMounted }) {
             Contact Me
           </a>
         </CSSTransition>
-        <CSSTransition in={isMounted.current} classNames='fadeup' timeout={1000} appear unmountOnExit>
+        <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} unmountOnExit>
           <button type='button' className='boxButton' style={{ transitionDelay: `${200}ms` }} aria-label='Explore'>
             Explore Me
           </button>
         </CSSTransition>
       </TransitionGroup>
-    </TransitionGroup>
+    </SummaryContainer>
   )
 }
 
