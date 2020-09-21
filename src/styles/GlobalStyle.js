@@ -147,6 +147,24 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
+  .boxButton{
+    margin-top: 1rem;
+    margin-right: 1rem;
+    padding: 1rem 1.8rem;
+    line-height: 1;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    color: ${themeDark.colors.button.text};
+    background-color: ${themeDark.colors.button.inner};
+    border: 1px solid ${themeDark.colors.button.border};
+    transition: ${transitionAll};
+
+    &:hover {
+      cursor: pointer;
+      background-color: ${themeDark.colors.button.hover};
+    }
+  }
+
   .facebookButton:hover:before{
     box-shadow: 0 0 15px ${themeDark.colors.constant.facebookButton};
   }

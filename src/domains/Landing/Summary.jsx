@@ -25,42 +25,6 @@ const StyledParagraphSummary = styled.p`
   `};
 `
 
-const StyledButton = styled.button`
-  margin-top: 1rem;
-  margin-right: 1rem;
-  padding: 1rem 1.8rem;
-  line-height: 1;
-  border-radius: 3px;
-  font-size: 0.8rem;
-  color: ${(props) => props.theme.colors.button.text};
-  background-color: ${(props) => props.theme.colors.button.inner};
-  border: 1px solid ${(props) => props.theme.colors.button.border};
-  transition: ${transitionAll};
-
-  &:hover {
-    cursor: pointer;
-    background-color: ${(props) => props.theme.colors.button.hover};
-  }
-`
-
-const StyledLink = styled.a`
-  margin-top: 1rem;
-  margin-right: 1rem;
-  padding: 1rem 1.8rem;
-  line-height: 1;
-  border-radius: 3px;
-  font-size: 0.8rem;
-  color: ${(props) => props.theme.colors.button.text};
-  background-color: ${(props) => props.theme.colors.button.inner};
-  border: 1px solid ${(props) => props.theme.colors.button.border};
-  transition: ${transitionAll};
-
-  &:hover {
-    cursor: pointer;
-    background-color: ${(props) => props.theme.colors.button.hover};
-  }
-`
-
 function Summary({ isMounted }) {
   return (
     <TransitionGroup component={SummaryContainer}>
@@ -72,15 +36,19 @@ function Summary({ isMounted }) {
       </CSSTransition>
       <TransitionGroup component={ButtonsContainer}>
         <CSSTransition in={isMounted.current} classNames='fadeup' timeout={1000} appear unmountOnExit>
-          <StyledLink
+          <a
+            className='boxButton'
             href={`mailto:${metaTag.email}?subject=Contact from your Portfolio`}
+            aria-label='Contact'
             style={{ transitionDelay: `${100}ms` }}
           >
             Contact Me
-          </StyledLink>
+          </a>
         </CSSTransition>
         <CSSTransition in={isMounted.current} classNames='fadeup' timeout={1000} appear unmountOnExit>
-          <StyledButton style={{ transitionDelay: `${200}ms` }}>Explore Me</StyledButton>
+          <button type='button' className='boxButton' style={{ transitionDelay: `${200}ms` }} aria-label='Explore'>
+            Explore Me
+          </button>
         </CSSTransition>
       </TransitionGroup>
     </TransitionGroup>

@@ -49,7 +49,7 @@ function SocialContainer() {
         ariaLabel='facebook'
         href='https://facebook.com/Mousticke'
         className='facebookButton'
-        backgroundColor='#171515'
+        backgroundColor='#151b27'
         size='xs'
         shape='rounded'
       >
@@ -60,7 +60,7 @@ function SocialContainer() {
         ariaLabel='github'
         href='https://github.com/Mousticke'
         className='githubButton'
-        backgroundColor='#171515'
+        backgroundColor='#151b27'
         size='xs'
         shape='rounded'
       >
@@ -71,7 +71,7 @@ function SocialContainer() {
         ariaLabel='stackOverflow'
         href='https://stackoverflow.com/users/8270034/akim-benchiha'
         className='stackOverflowButton'
-        backgroundColor='#171515'
+        backgroundColor='#151b27'
         size='xs'
         shape='rounded'
       >
@@ -82,7 +82,7 @@ function SocialContainer() {
         ariaLabel='instagram'
         href='https://www.instagram.com/moustick_/'
         className='instagramButton'
-        backgroundColor='#171515'
+        backgroundColor='#151b27'
         size='xs'
         shape='rounded'
       >
@@ -93,7 +93,7 @@ function SocialContainer() {
         ariaLabel='linkedIn'
         href='https://www.linkedin.com/in/akim-benchiha'
         className='linkedInButton'
-        backgroundColor='#171515'
+        backgroundColor='#151b27'
         size='xs'
         shape='rounded'
       >

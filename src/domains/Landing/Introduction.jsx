@@ -20,7 +20,7 @@ const StyledHeroGreeting = styled.h6`
   transition: ${transitionAll};
 `
 const StyledHeroTitle = styled.h1`
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin: 0;
   color: ${(props) => props.theme.colors.text.heading};
   ${breakpoints.bigDesktop`
