@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import { transitionAll } from '@styles'
 
 const StyledButton = styled.button`
-  font-size: 1rem;
+  font-size: 0.8em;
+  line-height: 2em;
   display: inline-block;
   font-weight: 400;
   user-select: none;
@@ -55,13 +56,13 @@ const StyledButton = styled.button`
         return `3.5em`
     }
   }};
-  overflow: hidden;
   background-color: ${(props) => props.backgroundColor};
   margin: 0.3em;
   border: none;
 `
 const StyledAnchor = styled.a`
-  font-size: 1rem;
+  font-size: 0.8em;
+  line-height: 2em;
   display: inline-block;
   font-weight: 400;
   user-select: none;
@@ -86,32 +87,31 @@ const StyledAnchor = styled.a`
   width: ${(props) => {
     switch (props.size) {
       case 'lg':
-        return `3.5em`
+        return `3.5rem`
       case `md`:
-        return `3em`
+        return `3rem`
       case `sm`:
-        return `2.5em`
+        return `2.5rem`
       case `xs`:
-        return `2em`
+        return `2rem`
       default:
-        return `3.5em`
+        return `3.5rem`
     }
   }};
   height: ${(props) => {
     switch (props.size) {
       case 'lg':
-        return `3.5em`
+        return `3.5rem`
       case `md`:
-        return `3em`
+        return `3rem`
       case `sm`:
-        return `2.5em`
+        return `2.5rem`
       case `xs`:
-        return `2em`
+        return `2rem`
       default:
-        return `3.5em`
+        return `3.5rem`
     }
   }};
-  overflow: hidden;
   background-color: ${(props) => props.backgroundColor};
   margin: 0.3em;
   border: none;

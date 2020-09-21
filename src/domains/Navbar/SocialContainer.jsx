@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { FaFacebookF, FaGithub, FaStackOverflow, FaLinkedinIn, FaInstagram } from 'react-icons/fa'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
 import { Button } from '@components'
 import { Link } from 'react-router-dom'
 
@@ -16,18 +16,32 @@ const Socialize = styled.div`
     width: fit-content;
     fill: white;
   }
-  button {
+  button,
+  a {
+    position: relative;
+    display: block;
     &:hover {
       outline: 0;
-      opacity: 0.8;
-      color: #fff;
+      &:before {
+        transform: scale(1.2);
+        filter: blur(3px);
+      }
+    }
+    &:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      z-index: -12;
+      transform: scale(0.9);
     }
   }
 `
 
 function SocialContainer() {
-  const themeContext = useContext(ThemeContext)
-
   return (
     <Socialize>
       <Button
@@ -35,7 +49,7 @@ function SocialContainer() {
         ariaLabel='facebook'
         href='https://facebook.com/Mousticke'
         className='facebookButton'
-        backgroundColor={themeContext.colors.constant.facebookButton}
+        backgroundColor='#171515'
         size='xs'
         shape='rounded'
       >
@@ -45,7 +59,8 @@ function SocialContainer() {
         as={Link}
         ariaLabel='github'
         href='https://github.com/Mousticke'
-        backgroundColor={themeContext.colors.constant.githubButton}
+        className='githubButton'
+        backgroundColor='#171515'
         size='xs'
         shape='rounded'
       >
@@ -55,7 +70,8 @@ function SocialContainer() {
         as={Link}
         ariaLabel='stackOverflow'
         href='https://stackoverflow.com/users/8270034/akim-benchiha'
-        backgroundColor={themeContext.colors.constant.stackOverflowButton}
+        className='stackOverflowButton'
+        backgroundColor='#171515'
         size='xs'
         shape='rounded'
       >
@@ -65,7 +81,8 @@ function SocialContainer() {
         as={Link}
         ariaLabel='instagram'
         href='https://www.instagram.com/moustick_/'
-        backgroundColor={themeContext.colors.constant.instagramButton}
+        className='instagramButton'
+        backgroundColor='#171515'
         size='xs'
         shape='rounded'
       >
@@ -75,7 +92,8 @@ function SocialContainer() {
         as={Link}
         ariaLabel='linkedIn'
         href='https://www.linkedin.com/in/akim-benchiha'
-        backgroundColor={themeContext.colors.constant.linkedInButton}
+        className='linkedInButton'
+        backgroundColor='#171515'
         size='xs'
         shape='rounded'
       >
