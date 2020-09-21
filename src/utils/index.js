@@ -1,2 +1,2 @@
-/* eslint-disable import/prefer-default-export */
 export { default as throttle } from './throttle'
+export { default as sr } from './scrollreveal'

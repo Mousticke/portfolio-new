@@ -97,6 +97,8 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     font-weight: ${fonts.weight.headers};
     margin: 0.7rem 0;
+    line-height: 1.1;
+    font-weight: 600;
   }
 
   h1{
@@ -163,6 +165,38 @@ const GlobalStyle = createGlobalStyle`
       cursor: pointer;
       background-color: ${themeDark.colors.button.hover};
     }
+  }
+
+  .numbered-heading::before {
+    position: relative;
+    counter-increment: section 1;
+    content: "0" counter(section) ".";
+    margin-right: 10px;
+    color: ${themeDark.colors.text.section_number};
+    font-weight: 400;
+    
+
+  }
+
+  .numbered-heading{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    margin: 10px 0px 40px;
+    width: 100%;
+    white-space: nowrap;
+    font-family: 'Inconsolata';
+  }
+
+  .numbered-heading::after {
+    width: 300px;
+    content: "";
+    display: block;
+    position: relative;
+    height: 1px;
+    margin-left: 20px;
+    background-color: ${themeDark.colors.text.default}
   }
 
   .facebookButton:hover:before{

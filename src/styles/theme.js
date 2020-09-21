@@ -95,6 +95,7 @@ export const themeDark = {
       default: '#9fa4b3',
       heading: '#fff',
       greeting: '#00E0D8',
+      section_number: '#00E0D8',
       quote_author: '#6c757d',
     },
   },

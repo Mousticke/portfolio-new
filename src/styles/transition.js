@@ -9,6 +9,8 @@ export const transitionHamburger = {
   afterActive: `bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s`,
 }
 
+export const transitionSection = `opacity 0.5s cubic-bezier(0.34, -0.26, 0.2, 0.69) 0.2s, transform 0.5s cubic-bezier(0.34, -0.26, 0.2, 0.69) 0.2s`
+
 const transitionFunction = {
   transition_out_back: `cubic-bezier(0.18, 0.89, 0.32, 1.28)`,
   transition_ease: `cubic-bezier(0.645, 0.045, 0.355, 1)`,

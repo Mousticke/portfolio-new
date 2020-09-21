@@ -1,8 +1,8 @@
 const fonts = {
   style: {
     sans_serif:
-      '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
-    monospace: 'SFMono-Regular, Menlo, Monaco, Inconsolata, Liberation Mono, Courier New, monospace',
+      'Inconsolata, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+    monospace: 'SFMono-Regular, Menlo, Monaco, Liberation Mono, Courier New, monospace',
     default: 'Poppins, sans-serif',
     navbar: 'Inconsolata, monospace',
   },

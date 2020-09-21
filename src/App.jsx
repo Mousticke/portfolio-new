@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useReducer, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
-import { themeDark, themeLight, GlobalStyle, sizes } from '@styles'
+import { themeDark, themeLight, GlobalStyle, sizes, transitionSection } from '@styles'
 import { SEO, Main } from '@components'
-import { Navbar, Landing } from '@domains'
-import { throttle } from '@utils'
+import { Navbar, Landing, About, Project, Experience } from '@domains'
+import { throttle, sr } from '@utils'
+import scrollConfig from '@config/scrollReveal'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 `
 
 const Wrapper = styled.div`
@@ -31,9 +31,10 @@ const Section = styled.section`
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 100vh;
   color: ${(props) => props.theme.colors.text.default};
   padding: 5rem 0;
+  min-height: ${(props) => (props.Fluid ? '100vh' : 'none')};
+  transition: ${(props) => (props.Reveal ? `${transitionSection}` : 'none')};
 `
 
 const initialState = {
@@ -63,23 +64,26 @@ export const ThemeContext = React.createContext(null)
 function App() {
   const [theme, dispatch] = useReducer(reducer, initialState)
   const [isTop, setIsTop] = useState(true)
-  // const [projectSection, setProjectSection] = useState(true)
-  const sectionRefProject = useRef(null)
+  const revealAboutContainer = useRef(null)
+  const revealExperienceContainer = useRef(null)
+  const revealProjectContainer = useRef(null)
   useEffect(() => {
     window.addEventListener(
       'scroll',
       throttle(() => {
         const topScroll = window.scrollY < 100 && window.innerWidth <= sizes.tablet.max
-        /* const projectScroll =
-          window.scrollY >= sectionRefProject.current.offsetTop * 0.9 &&
-          window.scrollY < sectionRefProject.current.clientHeight + sectionRefProject.current.offsetTop
-        setProjectSection(projectScroll) */
         if (topScroll !== isTop) {
           setIsTop(topScroll)
         }
       })
     )
   }, [isTop])
+
+  useEffect(() => {
+    sr.reveal(revealAboutContainer.current, scrollConfig())
+    sr.reveal(revealExperienceContainer.current, scrollConfig())
+    sr.reveal(revealProjectContainer.current, scrollConfig())
+  }, [])
 
   return (
     <ThemeProvider theme={theme.isDark ? themeDark : themeLight}>
@@ -94,17 +98,17 @@ function App() {
         </ThemeContext.Provider>
         <Wrapper theme={theme.isDark ? themeDark : themeLight} id='wrapper'>
           <Main>
-            <Section id='home'>
+            <Section Fluid id='home'>
               <Landing />
             </Section>
-            <Section id='about' background>
-              Section
+            <Section Reveal id='about' background ref={revealAboutContainer}>
+              <About />
             </Section>
-            <Section id='experience' background>
-              Section
+            <Section Reveal id='experience' background ref={revealExperienceContainer}>
+              <Experience />
             </Section>
-            <Section ref={sectionRefProject} id='projects' background>
-              Section
+            <Section Reveal id='projects' background ref={revealProjectContainer}>
+              <Project />
             </Section>
           </Main>
           <Footer id='contact'>Hi there</Footer>
