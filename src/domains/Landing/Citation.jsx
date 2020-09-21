@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { transitionAll } from '@styles'
 
 const StyledCitation = styled.div`
   grid-area: citation;
   blockquote {
     text-align: center;
+    transition: ${transitionAll};
   }
   p {
     font-size: 0.83rem;
@@ -31,7 +33,7 @@ const StyledCitation = styled.div`
 function Citation({ isMounted }) {
   return (
     <TransitionGroup component={null}>
-      <CSSTransition in={isMounted.current} classNames='fade' timeout={1000} appear unmountOnExit>
+      <CSSTransition in={isMounted.current} classNames='fadeup' timeout={1000} appear unmountOnExit>
         <StyledCitation>
           <blockquote>
             <p>

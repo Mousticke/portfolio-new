@@ -15,12 +15,23 @@ export const breakpoints = Object.keys(sizes).reduce((accumulator, label) => {
   // https://zellwk.com/blog/media-query-units/
   // const emSizeMin = sizes[label].min / 16
   const emSizeMax = sizes[label].max / 16
-  accumulator[label] = (...args) => css`
-    @media (max-width: ${emSizeMax}rem) {
-      ${css(...args)};s
+  const emSizeMin = sizes[label].min / 16
+
+  accumulator[label] = (...args) => {
+    if (label === 'giant') {
+      return css`
+        @media (min-width: ${emSizeMin}rem) {
+          ${css(...args)};
+        }
+      `
     }
-  `
+    return css`
+      @media (max-width: ${emSizeMax}rem) {
+        ${css(...args)};
+      }
+    `
+  }
+
   return accumulator
 }, {})
-
 export default breakpoints

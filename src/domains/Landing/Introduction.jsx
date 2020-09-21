@@ -60,14 +60,14 @@ function Introduction({ isMounted }) {
   return (
     <IntroContainer>
       <TransitionGroup component={null}>
-        <CSSTransition in={isMounted} classNames='fade' timeout={1000} appear unmountOnExit>
+        <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} appear unmountOnExit>
           <StyledHeroGreeting style={{ transitionDelay: `${100}ms` }}>Hi there, my name is</StyledHeroGreeting>
         </CSSTransition>
-        <CSSTransition in={isMounted} classNames='fade' timeout={1000} appear unmountOnExit>
-          <StyledHeroTitle style={{ transitionDelay: `${150}ms` }}>Akim Benchiha</StyledHeroTitle>
+        <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} appear unmountOnExit>
+          <StyledHeroTitle style={{ transitionDelay: `${200}ms` }}>Akim Benchiha</StyledHeroTitle>
         </CSSTransition>
-        <CSSTransition in={isMounted} classNames='fade' timeout={1000} appear unmountOnExit>
-          <StyledHeroSubTitle style={{ transitionDelay: `${180}ms` }}>I am a software engineer</StyledHeroSubTitle>
+        <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} appear unmountOnExit>
+          <StyledHeroSubTitle style={{ transitionDelay: `${300}ms` }}>I am a software engineer</StyledHeroSubTitle>
         </CSSTransition>
       </TransitionGroup>
     </IntroContainer>
