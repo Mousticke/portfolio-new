@@ -9,8 +9,10 @@ const IntroContainer = styled.div`
   z-index: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   ${breakpoints.tablet`
   align-items: center;
+  text-align:center;
   `};
 `
 
@@ -20,38 +22,38 @@ const StyledHeroGreeting = styled.h6`
   transition: ${transitionAll};
 `
 const StyledHeroTitle = styled.h1`
-  font-size: 3.5rem;
+  font-size: 5rem;
   margin: 0;
   color: ${(props) => props.theme.colors.text.heading};
   ${breakpoints.bigDesktop`
-  font-size: 3rem;
+  font-size: 4.5rem;
   `};
   ${breakpoints.desktop`
-  font-size: 2.5rem;
+  font-size: 4rem;
   `};
   ${breakpoints.tablet`
-  font-size: 3rem;
+  font-size: 4.5rem;
   `};
   ${breakpoints.phablet`
-  font-size: 2.5rem;
+  font-size: 4rem;
   `};
   transition: ${transitionAll};
 `
 
 const StyledHeroSubTitle = styled.h1`
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin: 0;
   ${breakpoints.bigDesktop`
-  font-size: 1.8rem;
+  font-size: 2.1rem;
   `};
   ${breakpoints.desktop`
-  font-size: 1.5rem;
-  `};
-  ${breakpoints.tablet`
   font-size: 1.8rem;
   `};
+  ${breakpoints.tablet`
+  font-size: 2.1rem;
+  `};
   ${breakpoints.phablet`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   `};
   transition: ${transitionAll};
 `

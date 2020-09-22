@@ -8,6 +8,7 @@ import { transitionAll, breakpoints } from '@styles'
 const HeroContainer = styled.div`
   grid-area: hero;
   display: flex;
+  align-items: center;
   ${breakpoints.tablet`
   justify-content: center;
   `};
@@ -16,8 +17,8 @@ const HeroContainer = styled.div`
 const StyledImage = styled.img`
   width: 100%;
   height: auto;
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 250px;
+  max-height: 250px;
   border-radius: 50%;
   transition: ${transitionAll};
 `
