@@ -34,6 +34,7 @@ const Section = styled.section`
   color: ${(props) => props.theme.colors.text.default};
   padding: 5rem 0;
   min-height: ${(props) => (props.Fluid ? '100vh' : 'none')};
+  max-width: 1000px;
   transition: ${(props) => (props.Reveal ? `${transitionSection}` : 'none')};
 `
 

@@ -196,7 +196,7 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     height: 1px;
     margin-left: 20px;
-    background-color: ${themeDark.colors.text.default}
+    background-color: ${themeDark.colors.general.header_section_line}
   }
 
   .facebookButton:hover:before{

@@ -3083,8 +3083,8 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001012:
-  version "1.0.30001015"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001015.tgz#15a7ddf66aba786a71d99626bc8f2b91c6f0f5f0"
+  version "1.0.30001135"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001135.tgz"
 
 caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001038:
   version "1.0.30001039"

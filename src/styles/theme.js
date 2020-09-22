@@ -61,6 +61,7 @@ export const themeDark = {
     },
     general: {
       linkNumber: '#00E0D8',
+      header_section_line: '#3e4956',
       default: '#08121F',
     },
     background: {
