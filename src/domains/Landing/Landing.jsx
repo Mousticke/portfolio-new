@@ -5,7 +5,7 @@ import useMounted from '@hooks/useMounted'
 import Introduction from './Introduction'
 /* import TypistIntro from './Typist' */
 import Citation from './Citation'
-import Hero from './Hero'
+/* import Hero from './Hero' */
 import Summary from './Summary'
 
 const StyledGrid = styled.div`
