@@ -65,9 +65,11 @@ export const ThemeContext = React.createContext(null)
 function App() {
   const [theme, dispatch] = useReducer(reducer, initialState)
   const [isTop, setIsTop] = useState(true)
+  const [activeLink, setActiveLink] = useState('home')
   const revealAboutContainer = useRef(null)
   const revealExperienceContainer = useRef(null)
   const revealProjectContainer = useRef(null)
+
   useEffect(() => {
     window.addEventListener(
       'scroll',
@@ -76,9 +78,30 @@ function App() {
         if (topScroll !== isTop) {
           setIsTop(topScroll)
         }
+        if (
+          window.scrollY >= revealAboutContainer.current.offsetTop &&
+          window.scrollY <= revealAboutContainer.current.offsetTop + revealAboutContainer.current.clientHeight
+        ) {
+          setActiveLink('about')
+        }
+        if (
+          window.scrollY >= revealExperienceContainer.current.offsetTop &&
+          window.scrollY <= revealExperienceContainer.current.clientHeight + revealExperienceContainer.current.offsetTop
+        ) {
+          setActiveLink('experience')
+        }
+        if (
+          window.scrollY >= revealProjectContainer.current.offsetTop &&
+          window.scrollY <= revealProjectContainer.current.clientHeight + revealProjectContainer.current.offsetTop
+        ) {
+          setActiveLink('projects')
+        }
+        if (window.scrollY < revealAboutContainer.current.offsetTop) {
+          setActiveLink('home')
+        }
       })
     )
-  }, [isTop])
+  }, [isTop, activeLink])
 
   useEffect(() => {
     sr.reveal(revealAboutContainer.current, scrollConfig())
@@ -95,20 +118,20 @@ function App() {
         <SEO />
         <GlobalStyle />
         <ThemeContext.Provider value={{ theme, dispatch }}>
-          <Navbar isTop={isTop} />
+          <Navbar isTop={isTop} activeLink={activeLink} />
         </ThemeContext.Provider>
         <Wrapper theme={theme.isDark ? themeDark : themeLight} id='wrapper'>
           <Main>
             <Section Fluid id='home'>
               <Landing />
             </Section>
-            <Section Reveal id='about' background ref={revealAboutContainer}>
+            <Section style={{ height: '100vh' }} Reveal id='about' ref={revealAboutContainer}>
               <About />
             </Section>
-            <Section Reveal id='experience' background ref={revealExperienceContainer}>
+            <Section style={{ height: '100vh' }} Reveal id='experience' ref={revealExperienceContainer}>
               <Experience />
             </Section>
-            <Section Reveal id='projects' background ref={revealProjectContainer}>
+            <Section style={{ height: '100vh' }} Reveal id='projects' ref={revealProjectContainer}>
               <Project />
             </Section>
           </Main>

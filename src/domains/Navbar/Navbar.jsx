@@ -92,7 +92,7 @@ const Brand = styled.div`
   }
 `
 
-function Navbar({ isTop }) {
+function Navbar({ isTop, activeLink }) {
   const [showSide, setShowSide] = useState(false)
 
   const isMounted = useMounted()
@@ -134,7 +134,7 @@ function Navbar({ isTop }) {
             <BurgerMenu showSide={showSide} toggleSideMenu={toggleSideMenu} />
           </CSSTransition>
         </TransitionGroup>
-        <NavLinks isMounted={isMounted.current} />
+        <NavLinks isMounted={isMounted.current} activeLink={activeLink} />
         <SocialGrid>
           <SocialContainer isMounted={isMounted.current} />
         </SocialGrid>
@@ -146,6 +146,7 @@ function Navbar({ isTop }) {
 
 Navbar.propTypes = {
   isTop: PropTypes.bool.isRequired,
+  activeLink: PropTypes.string.isRequired,
 }
 
 export default Navbar

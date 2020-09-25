@@ -81,12 +81,12 @@ const Circle = styled.span`
   `};
 `
 
-function NavLinks({ isMounted }) {
+function NavLinks({ isMounted, activeLink }) {
   return (
     <NavLinksWrapper>
       <TransitionGroup component={NavList}>
         {navLinks &&
-          navLinks.map(({ id, url, name }, i) => (
+          navLinks.map(({ id, url, name, element }, i) => (
             <CSSTransition in={isMounted} key={id} classNames='fadedown' timeout={1000} appear unmountOnExit>
               <NavListItem key={id} style={{ transitionDelay: `${i * 100}ms` }}>
                 <NavLinkItem
@@ -95,9 +95,9 @@ function NavLinks({ isMounted }) {
                   smooth
                   aria-label={name}
                   to={url}
-                  isActive={(match, location) => {
-                    const link = location.pathname + location.hash
-                    return link === url
+                  isActive={() => {
+                    if (activeLink === element) return true
+                    return false
                   }}
                 >
                   <Circle className={name.toLowerCase()} />
@@ -114,6 +114,7 @@ function NavLinks({ isMounted }) {
 
 NavLinks.propTypes = {
   isMounted: PropTypes.bool.isRequired,
+  activeLink: PropTypes.string.isRequired,
 }
 
 export default React.memo(NavLinks)
