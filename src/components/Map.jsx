@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { Map as LeafletMap, TileLayer, Popup, Marker } from 'react-leaflet'
 import { divIcon } from 'leaflet'
+import ReactCountryFlag from 'react-country-flag'
 import mapData from '@config/mapData'
 import 'leaflet/dist/leaflet.css'
 import { FaMapPin } from 'react-icons/fa'
+import Legend from './Legend'
 
 const placeType = {
   birth_place: {
@@ -51,23 +53,35 @@ function Map() {
       html: iconMarkup(color),
     })
 
-  const showMarkerInfo = (latLng) => {
-    setMapCenter(latLng)
+  const showMarkerInfo = (lat, lng) => {
+    setMapCenter([lat, lng])
     setMapZoom(12)
   }
 
   const showDataOnMap = () => {
-    return mapData.map((country) =>
-      country.places.map((place) => (
+    return mapData.map((countries) =>
+      countries.places.map((place) => (
         <Marker
           key={place.id}
           position={[place.lat, place.lng]}
           icon={customMarkerIcon(placeType[place.type].hex)}
-          onClick={() => showMarkerInfo([place.lat, place.lng])}
+          onClick={() => showMarkerInfo(place.lat, place.lng)}
         >
           <Popup>
             <div className='info-container'>
-              <h6>{place.city}</h6>
+              <div>
+                <ReactCountryFlag
+                  className='emojiFlag'
+                  countryCode={countries.country.code}
+                  style={{
+                    fontSize: '1em',
+                    lineHeight: '1em',
+                  }}
+                  aria-label={countries.country.name}
+                  svg
+                />
+                <h5>{`${countries.country.name}  -  ${place.city}`}</h5>
+              </div>
               <span>{placeType[place.type].name}</span>
               <p>{place.description}</p>
             </div>
@@ -86,6 +100,7 @@ function Map() {
         />
         {/* Loop through countries and set markers on the screen */}
         {showDataOnMap()}
+        <Legend placeType={placeType} />
       </LeafletMap>
     </div>
   )

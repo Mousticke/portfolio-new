@@ -311,12 +311,17 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .info-container{
-      width: 150px;
+      width: 200px;
   }
 
   .leaflet-div-icon {
   background: transparent;
   border: none;
+}
+
+.leaflet-bottom{
+  padding: 1em;
+  background:white;
 }
 
 
