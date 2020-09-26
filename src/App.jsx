@@ -2,7 +2,7 @@ import React, { useState, useEffect, useReducer, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, themeLight, GlobalStyle, sizes, transitionSection } from '@styles'
-import { SEO, Main } from '@components'
+import { SEO, Main, Map } from '@components'
 import { Navbar, Landing, About, Project, Experience } from '@domains'
 import { throttle, sr } from '@utils'
 import scrollConfig from '@config/scrollReveal'
@@ -135,7 +135,9 @@ function App() {
               <Project />
             </Section>
           </Main>
-          <Footer id='contact'>Hi there</Footer>
+          <Footer style={{ height: '100vh' }} id='contact'>
+            <Map />
+          </Footer>
         </Wrapper>
       </Container>
     </ThemeProvider>

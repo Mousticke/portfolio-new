@@ -63,7 +63,7 @@ function SocialContainer({ isMounted }) {
   }
 
   return (
-    <TransitionGroup component={Socialize}>
+    <TransitionGroup component={Socialize} className='socialContainer'>
       {socialLinks &&
         socialLinks.map(({ id, url, name }, i) => (
           <CSSTransition in={isMounted} key={id} classNames='fadeup' timeout={1000} appear unmountOnExit>

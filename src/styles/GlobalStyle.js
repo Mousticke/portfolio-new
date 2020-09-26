@@ -121,8 +121,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   svg {
-    width: 100%;
-    height: 100%;
     fill: currentColor;
     vertical-align: middle;
     &:not(:root) {
@@ -297,6 +295,31 @@ const GlobalStyle = createGlobalStyle`
   .stackOverflowButton:before{
     background-color:${themeDark.colors.constant.stackOverflowButton}
   }
+
+
+  .map{
+    height: 100vh;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 0.8rem;
+    box-shadow: 0 0 8px -4px rgba(0,0,0,0.5);
+  }
+
+  .map .leaflet-container{
+      height: 100%;
+  }
+
+  .info-container{
+      width: 150px;
+  }
+
+  .leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+
+
 
   ${transition};
 `
