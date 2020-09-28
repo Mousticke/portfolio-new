@@ -5,7 +5,7 @@ import { divIcon } from 'leaflet'
 import ReactCountryFlag from 'react-country-flag'
 import mapData from '@config/mapData'
 import 'leaflet/dist/leaflet.css'
-import { FaMapPin } from 'react-icons/fa'
+import { FaMapMarker } from 'react-icons/fa'
 import Legend from './Legend'
 
 const placeType = {
@@ -43,18 +43,17 @@ const placeType = {
   },
 }
 
-function Map() {
+const Map = () => {
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 })
   const [mapZoom, setMapZoom] = useState(3)
-
-  const iconMarkup = (color) => renderToStaticMarkup(<FaMapPin style={{ color }} size={30} />)
+  const iconMarkup = (color) => renderToStaticMarkup(<FaMapMarker style={{ color }} size={30} />)
   const customMarkerIcon = (color) =>
     divIcon({
       html: iconMarkup(color),
     })
 
-  const showMarkerInfo = (lat, lng) => {
-    setMapCenter([lat, lng])
+  const showMarkerInfo = (latLng) => {
+    setMapCenter(latLng)
     setMapZoom(12)
   }
 
@@ -65,7 +64,7 @@ function Map() {
           key={place.id}
           position={[place.lat, place.lng]}
           icon={customMarkerIcon(placeType[place.type].hex)}
-          onClick={() => showMarkerInfo(place.lat, place.lng)}
+          onClick={() => showMarkerInfo([place.lat, place.lng])}
         >
           <Popup>
             <div className='info-container'>
@@ -97,6 +96,7 @@ function Map() {
         <TileLayer
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          noWrap
         />
         {/* Loop through countries and set markers on the screen */}
         {showDataOnMap()}

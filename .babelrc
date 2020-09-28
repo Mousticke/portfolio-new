@@ -14,7 +14,8 @@
                     "@config": "./src/config",
                     "@resources": "./src/resources",
                     "@utils": "./src/utils",
-                    "@domains": "./src/domains"
+                    "@domains": "./src/domains",
+                    "@context": "./src/context"
                 }
             }
         ]

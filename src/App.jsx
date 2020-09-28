@@ -2,10 +2,11 @@ import React, { useState, useEffect, useReducer, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, themeLight, GlobalStyle, sizes, transitionSection } from '@styles'
-import { SEO, Main, Map } from '@components'
+import { SEO, Main, Modal } from '@components'
 import { Navbar, Landing, About, Project, Experience } from '@domains'
 import { throttle, sr } from '@utils'
 import scrollConfig from '@config/scrollReveal'
+import { ModalProvider } from '@context/modalContext'
 
 const Container = styled.div`
   display: flex;
@@ -111,35 +112,39 @@ function App() {
 
   return (
     <ThemeProvider theme={theme.isDark ? themeDark : themeLight}>
-      <Helmet>
-        <body data-theme={theme.isDark ? 'dark-mode' : 'light-mode'} />
-      </Helmet>
-      <Container className='App'>
-        <SEO />
-        <GlobalStyle />
-        <ThemeContext.Provider value={{ theme, dispatch }}>
-          <Navbar isTop={isTop} activeLink={activeLink} />
-        </ThemeContext.Provider>
-        <Wrapper theme={theme.isDark ? themeDark : themeLight} id='wrapper'>
-          <Main>
-            <Section Fluid id='home'>
-              <Landing />
-            </Section>
-            <Section style={{ height: '100vh' }} Reveal id='about' ref={revealAboutContainer}>
-              <About />
-            </Section>
-            <Section style={{ height: '100vh' }} Reveal id='experience' ref={revealExperienceContainer}>
-              <Experience />
-            </Section>
-            <Section style={{ height: '100vh' }} Reveal id='projects' ref={revealProjectContainer}>
-              <Project />
-            </Section>
-          </Main>
-          <Footer style={{ height: '100vh' }} id='contact'>
-            <Map />
-          </Footer>
-        </Wrapper>
-      </Container>
+      <ModalProvider>
+        <Modal />
+        <Helmet>
+          <body data-theme={theme.isDark ? 'dark-mode' : 'light-mode'} />
+        </Helmet>
+        <Container className='App'>
+          <SEO />
+          <GlobalStyle />
+          <ThemeContext.Provider value={{ theme, dispatch }}>
+            <Navbar isTop={isTop} activeLink={activeLink} />
+          </ThemeContext.Provider>
+          <Wrapper theme={theme.isDark ? themeDark : themeLight} id='wrapper'>
+            <Main>
+              <Section Fluid id='home'>
+                <Landing />
+              </Section>
+              <Section style={{ height: '100vh' }} Reveal id='about' ref={revealAboutContainer}>
+                <About />
+              </Section>
+              <Section style={{ height: '100vh' }} Reveal id='experience' ref={revealExperienceContainer}>
+                <Experience />
+              </Section>
+              <Section style={{ height: '100vh' }} Reveal id='projects' ref={revealProjectContainer}>
+                <Project />
+              </Section>
+            </Main>
+
+            <Footer style={{ height: '100vh' }} id='contact'>
+              Hi there.
+            </Footer>
+          </Wrapper>
+        </Container>
+      </ModalProvider>
     </ThemeProvider>
   )
 }

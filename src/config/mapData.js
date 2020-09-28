@@ -239,7 +239,7 @@ const mapData = [
   {
     id: '7',
     country: {
-      code: 'EP',
+      code: 'EG',
       name: 'Egypt',
     },
     places: [

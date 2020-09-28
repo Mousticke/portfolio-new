@@ -299,11 +299,7 @@ const GlobalStyle = createGlobalStyle`
 
   .map{
     height: 100vh;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 1rem;
-    margin-top: 0.8rem;
-    box-shadow: 0 0 8px -4px rgba(0,0,0,0.5);
+    width:100%;
   }
 
   .map .leaflet-container{
@@ -323,7 +319,6 @@ const GlobalStyle = createGlobalStyle`
   padding: 1em;
   background:white;
 }
-
 
 
   ${transition};

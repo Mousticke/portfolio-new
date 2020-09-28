@@ -12,5 +12,6 @@ module.exports = override(
     '@resources': path.resolve('./src/resources'),
     '@utils': path.resolve('./src/utils'),
     '@domains': path.resolve('./src/domains'),
+    '@context': path.resolve('./src/context'),
   })
 )

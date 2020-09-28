@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import styled from 'styled-components'
 import { transitionAll, breakpoints } from '@styles'
 import metaTag from '@config/metadata'
+import { ModalContext } from '@context/modalContext'
+import { Map } from '@components'
 
 const SummaryContainer = styled.div`
   grid-area: summary;
@@ -26,6 +28,7 @@ const StyledParagraphSummary = styled.p`
 `
 
 function Summary({ isMounted }) {
+  const { handleModal } = useContext(ModalContext)
   return (
     <SummaryContainer>
       <TransitionGroup appear component={null}>
@@ -48,7 +51,13 @@ function Summary({ isMounted }) {
           </a>
         </CSSTransition>
         <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} unmountOnExit>
-          <button type='button' className='boxButton' style={{ transitionDelay: `${200}ms` }} aria-label='Explore'>
+          <button
+            type='button'
+            className='boxButton'
+            style={{ transitionDelay: `${200}ms` }}
+            aria-label='Explore'
+            onClick={() => handleModal(<Map />)}
+          >
             Explore Me
           </button>
         </CSSTransition>
