@@ -98,13 +98,13 @@ function Navbar({ isTop, activeLink }) {
   const isMounted = useMounted()
 
   const toggleSideMenu = () => {
-    setShowSide(!showSide)
+    setShowSide((prevState) => !prevState)
   }
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > sizes.tablet.max && showSide) {
-        setShowSide(!showSide)
+        setShowSide((prevState) => !prevState)
       }
     }
     window.addEventListener('resize', () => throttle(handleResize()))

@@ -5,7 +5,7 @@ export default () => {
   const [modalContent, setModalContent] = useState('')
 
   const handleModal = (content = false) => {
-    setModal(!modal)
+    setModal((prevState) => !prevState)
     if (content) {
       setModalContent(content)
     }
