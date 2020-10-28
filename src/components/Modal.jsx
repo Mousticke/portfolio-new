@@ -35,6 +35,30 @@ const ModalGrid = styled.div`
   box-shadow: 16px 0px 30px -17px ${(props) => props.theme.colors.navbar.box_shadow};
 `
 
+const ModalCloseButton = styled.button`
+  display: flex;
+  justify-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: ${(props) => props.theme.colors.button.text};
+  border: none;
+  font-size: 2em;
+  transition: ${transitionAll};
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.button.hover};
+    cursor: pointer;
+  }
+`
+
+const ModalContent = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 10;
+`
+
 const Modal = () => {
   const { modalContent, handleModal, modal } = useContext(ModalContext)
   if (modal) {
@@ -44,11 +68,11 @@ const Modal = () => {
           <body className={modal ? 'blur' : ''} />
         </Helmet>
         <ModalGrid>
-          <button onClick={handleModal} type='button' aria-label='Modal'>
+          <ModalCloseButton onClick={handleModal} type='button' aria-label='Modal'>
             {' '}
             &times;
-          </button>
-          <div
+          </ModalCloseButton>
+          <ModalContent
             style={{
               width: '100vw',
               height: '100vh',
@@ -57,7 +81,7 @@ const Modal = () => {
             }}
           >
             {modalContent}
-          </div>
+          </ModalContent>
         </ModalGrid>
       </ModalContainer>
     )

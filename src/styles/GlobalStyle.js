@@ -297,30 +297,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
-  .map{
-    height: 100vh;
-    width:100%;
-  }
-
-  .map .leaflet-container{
-      height: 100%;
-  }
-
-  .info-container{
-      width: 200px;
-  }
-
-  .leaflet-div-icon {
-  background: transparent;
-  border: none;
-}
-
-.leaflet-bottom{
-  padding: 1em;
-  background:white;
-}
-
-
   ${transition};
 `
 
