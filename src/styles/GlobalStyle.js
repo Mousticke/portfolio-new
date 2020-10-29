@@ -188,7 +188,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .numbered-heading::after {
-    width: 300px;
+    width: 100%;
     content: "";
     display: block;
     position: relative;

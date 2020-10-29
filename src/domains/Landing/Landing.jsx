@@ -19,13 +19,6 @@ const StyledGrid = styled.div`
   justify-content: center;
   align-self: center;
   grid-gap: 1rem;
-  ${breakpoints.giant`
-  grid-template-rows: minmax(0, 1fr) minmax(0, auto) minmax(0, auto);
-  grid-template-areas:
-    'intro intro intro intro'
-    'summary summary summary summary'
-    'citation citation citation citation';
-  `};
   ${breakpoints.tablet`
   grid-template-columns: 100%;
   grid-template-rows: minmax(0, auto) minmax(0, auto) minmax(0, auto);

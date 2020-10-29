@@ -39,6 +39,14 @@ export const themeLight = {
     link: {
       default: '#fff',
       hover: '#00E0D8',
+      highlight: '#52ffcf',
+      underline: '#00E0D8',
+    },
+    hashtag: {
+      background: '#182030',
+      text: '#9daccc',
+      hover: '#273045',
+      boxShadow: 'inset 0 0 0 1px #246',
     },
     text: {
       default: '#9fa4b3',
@@ -91,6 +99,14 @@ export const themeDark = {
     link: {
       default: '#fff',
       hover: '#00E0D8',
+      highlight: '#52ffcf',
+      underline: '#00E0D8',
+    },
+    hashtag: {
+      background: '#182030',
+      text: '#9daccc',
+      hover: '#273045',
+      boxShadow: 'inset 0 0 0 1px #246',
     },
     text: {
       default: '#9fa4b3',
