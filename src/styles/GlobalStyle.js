@@ -188,7 +188,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .numbered-heading::after {
-    width: 300px;
+    width: 100%;
     content: "";
     display: block;
     position: relative;
@@ -295,30 +295,6 @@ const GlobalStyle = createGlobalStyle`
   .stackOverflowButton:before{
     background-color:${themeDark.colors.constant.stackOverflowButton}
   }
-
-
-  .map{
-    height: 100vh;
-    width:100%;
-  }
-
-  .map .leaflet-container{
-      height: 100%;
-  }
-
-  .info-container{
-      width: 200px;
-  }
-
-  .leaflet-div-icon {
-  background: transparent;
-  border: none;
-}
-
-.leaflet-bottom{
-  padding: 1em;
-  background:white;
-}
 
 
   ${transition};

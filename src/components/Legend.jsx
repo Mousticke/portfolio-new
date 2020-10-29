@@ -14,7 +14,10 @@ const Legend = ({ placeType }) => {
 
       Object.keys(placeType).forEach((key) => {
         labels.push(
-          `<div style="display:flex"><div style="background:${placeType[key].hex}; width:1em; height:1em;"></div><span style="padding-left:1em">${placeType[key].name}</span></div>`
+          `<div style="display:flex">
+            <div style="background:${placeType[key].hex}; width:1em; height:1em;"></div>
+            <span style="padding-left:1em;font-weight: 600;">${placeType[key].name}</span>
+          </div>`
         )
       })
 
