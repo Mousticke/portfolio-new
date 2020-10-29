@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useRef } from 'react'
+import React, { useState, useCallback, useEffect, useReducer, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, themeLight, GlobalStyle, sizes, transitionSection } from '@styles'
@@ -71,38 +71,43 @@ function App() {
   const revealExperienceContainer = useRef(null)
   const revealProjectContainer = useRef(null)
 
+  const handleScroll = useCallback(
+    throttle(() => {
+      const topScroll = window.scrollY < 100 && window.innerWidth <= sizes.tablet.max
+      if (topScroll !== isTop) {
+        setIsTop(topScroll)
+      }
+      if (
+        window.scrollY >= revealAboutContainer.current.offsetTop &&
+        window.scrollY <= revealAboutContainer.current.offsetTop + revealAboutContainer.current.clientHeight
+      ) {
+        setActiveLink('about')
+      }
+      if (
+        window.scrollY >= revealExperienceContainer.current.offsetTop &&
+        window.scrollY <= revealExperienceContainer.current.clientHeight + revealExperienceContainer.current.offsetTop
+      ) {
+        setActiveLink('experience')
+      }
+      if (
+        window.scrollY >= revealProjectContainer.current.offsetTop &&
+        window.scrollY <= revealProjectContainer.current.clientHeight + revealProjectContainer.current.offsetTop
+      ) {
+        setActiveLink('projects')
+      }
+      if (window.scrollY < revealAboutContainer.current.offsetTop) {
+        setActiveLink('home')
+      }
+    }),
+    [isTop]
+  )
+
   useEffect(() => {
-    window.addEventListener(
-      'scroll',
-      throttle(() => {
-        const topScroll = window.scrollY < 100 && window.innerWidth <= sizes.tablet.max
-        if (topScroll !== isTop) {
-          setIsTop(topScroll)
-        }
-        if (
-          window.scrollY >= revealAboutContainer.current.offsetTop &&
-          window.scrollY <= revealAboutContainer.current.offsetTop + revealAboutContainer.current.clientHeight
-        ) {
-          setActiveLink('about')
-        }
-        if (
-          window.scrollY >= revealExperienceContainer.current.offsetTop &&
-          window.scrollY <= revealExperienceContainer.current.clientHeight + revealExperienceContainer.current.offsetTop
-        ) {
-          setActiveLink('experience')
-        }
-        if (
-          window.scrollY >= revealProjectContainer.current.offsetTop &&
-          window.scrollY <= revealProjectContainer.current.clientHeight + revealProjectContainer.current.offsetTop
-        ) {
-          setActiveLink('projects')
-        }
-        if (window.scrollY < revealAboutContainer.current.offsetTop) {
-          setActiveLink('home')
-        }
-      })
-    )
-  }, [isTop, activeLink])
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [handleScroll])
 
   useEffect(() => {
     sr.reveal(revealAboutContainer.current, scrollConfig())

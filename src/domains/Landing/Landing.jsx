@@ -3,9 +3,7 @@ import styled from 'styled-components'
 import { breakpoints } from '@styles'
 import useMounted from '@hooks/useMounted'
 import Introduction from './Introduction'
-/* import TypistIntro from './Typist' */
 import Citation from './Citation'
-/* import Hero from './Hero' */
 import Summary from './Summary'
 
 const StyledGrid = styled.div`
@@ -35,8 +33,6 @@ function Landing() {
   return (
     <StyledGrid>
       <Introduction isMounted={isMounted.current} />
-      {/* <TypistIntro /> */}
-      {/* <Hero isMounted={isMounted.current} /> */}
       <Summary isMounted={isMounted.current} />
       <Citation isMounted={isMounted.current} />
     </StyledGrid>

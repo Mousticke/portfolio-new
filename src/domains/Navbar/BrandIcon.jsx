@@ -37,4 +37,4 @@ const BrandIcon = () => (
   </svg>
 )
 
-export default BrandIcon
+export default React.memo(BrandIcon)
