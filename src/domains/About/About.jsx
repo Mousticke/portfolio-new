@@ -14,6 +14,14 @@ const StyledGrid = styled.div`
     'title title'
     'description hero';
   grid-gap: 1rem;
+  ${breakpoints.desktop`
+  grid-template-rows: minmax(0, auto) minmax(0, auto) minmax(200px, 350px);
+  grid-template-columns:minmax(0, auto);
+  grid-template-areas:
+    'title'
+    'description'
+    'hero';
+  `}
 `
 const StyledAboutTitle = styled.h2`
   grid-area: title;
@@ -25,14 +33,57 @@ const StyledAboutDescription = styled.div`
   word-break: keep-all;
 `
 
-const StyledAboutHero = styled.div`
+const StyledAboutHeroWrapper = styled.div`
   grid-area: hero;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${breakpoints.tablet`
+  ${breakpoints.desktop`
   justify-content: center;
   `};
+`
+
+const StyledAboutHeroContainer = styled.div`
+  position: relative;
+  display: block;
+  transition: ${transitionAll};
+  box-shadow: 0px 0px 16px 2px #00e0d8;
+  border-radius: 50%;
+  &:hover {
+    cursor pointer;
+    border-radius: 50%;
+    box-shadow: 0px 0px 23px 15px #00e0d8; 
+    & > img{
+      opacity: 0.5;
+    }
+    .about__img-caption{
+      opacity: 1;
+      color: white;
+      font-weight: 700;
+      font-size:1.3em;
+    }
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: -12;
+  }
+`
+
+const StyledImageCaption = styled.div`
+  transition: ${transitionAll};
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
 `
 
 const StyledImage = styled.img`
@@ -41,6 +92,8 @@ const StyledImage = styled.img`
   max-width: 350px;
   max-height: 350px;
   border-radius: 50%;
+  position: relative;
+  display: block;
   transition: ${transitionAll};
 `
 
@@ -81,6 +134,38 @@ const StyledAboutHashtag = styled.a`
     background-color: ${(props) => props.theme.colors.hashtag.hover};
   }
 `
+const StyledListContainer = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 200px));
+  padding: 0px;
+  overflow: hidden;
+  list-style: none;
+}
+`
+const StyledListItem = styled.li`
+  position: relative;
+  font-size: 0.9em;
+  margin-bottom: 0.3em;
+  padding-left: 1.2em;
+
+  &:before {
+    content: '◈';
+    line-height: 2em;
+    font-size: 0.8em;
+    padding-right: 0.5em;
+    color: ${(props) => props.theme.colors.list.puce};
+  }
+`
+
+const StyledTechnologies = styled.div`
+  ${breakpoints.desktop`
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+  `}
+`
 
 function About() {
   const isMounted = useMounted()
@@ -94,12 +179,12 @@ function About() {
             <p>Hello there, my name is Akim Benchiha</p>
             <div>
               <span>
-                I am a junior software engineer graduated in 2019 (Master of Engineering in Computing Science and
-                Industrial engineering) from&nbsp;
+                I am a junior software/hardware engineer graduated in 2019 (Master of Engineering in Computing Science
+                and Industrial engineering) from&nbsp;
               </span>
               <StyledAboutHighlight
                 aria-label='Centrale Lille'
-                href='https://www.centralelille.fr/'
+                href='https://centralelille.fr/'
                 target='_blank'
                 rel='noreferrer noopener'
               >
@@ -205,13 +290,29 @@ function About() {
                 </StyledAboutHashtag>
               </p>
             </div>
+            <StyledTechnologies>
+              <p>Here some technologies I have already working on :</p>
+              <StyledListContainer>
+                <StyledListItem>React</StyledListItem>
+                <StyledListItem>.NET</StyledListItem>
+                <StyledListItem>C/C++</StyledListItem>
+                <StyledListItem>IO-Link</StyledListItem>
+                <StyledListItem>Matlab</StyledListItem>
+                <StyledListItem>Embedded Systems</StyledListItem>
+              </StyledListContainer>
+            </StyledTechnologies>
           </StyledAboutDescription>
         </CSSTransition>
       </TransitionGroup>
 
-      <TransitionGroup component={StyledAboutHero}>
+      <TransitionGroup component={StyledAboutHeroWrapper}>
         <CSSTransition in={isMounted.current} classNames='fade' timeout={1000} appear unmountOnExit>
-          <StyledImage src={akim2020} alt='Akim Benchiha' />
+          <StyledAboutHeroContainer>
+            <StyledImage src={akim2020} alt='Akim Benchiha' />
+            <StyledImageCaption className='about__img-caption'>
+              <p>Download Resumé</p>
+            </StyledImageCaption>
+          </StyledAboutHeroContainer>
         </CSSTransition>
       </TransitionGroup>
     </StyledGrid>

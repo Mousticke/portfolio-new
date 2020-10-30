@@ -95,7 +95,7 @@ const Map = () => {
     })
 
   const showMarkerInfo = (latLng) => {
-    setMapZoom(12)
+    setMapZoom(8)
     setMapCenter({ ...mapCenter, lat: latLng[0], lng: latLng[1] })
   }
 

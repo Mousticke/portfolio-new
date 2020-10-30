@@ -9,7 +9,7 @@ const navLinks = [
     id: '1',
     name: 'Experience',
     url: '/#experience',
-    element: 'experience',
+    element: 'experiences',
   },
   {
     id: '2',
