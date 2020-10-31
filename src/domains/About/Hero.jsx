@@ -2,6 +2,7 @@ import React from 'react'
 import { transitionAll } from '@styles'
 import styled from 'styled-components'
 import akim2020 from '@resources/akim2020.jpg'
+import resumeEN from '@resources/resumeEN.pdf'
 
 const StyledAboutHeroContainer = styled.div`
   position: relative;
@@ -35,7 +36,6 @@ const StyledAboutHeroContainer = styled.div`
 `
 
 const StyledImageCaption = styled.div`
-  transition: ${transitionAll};
   opacity: 0;
   position: absolute;
   top: 50%;
@@ -62,7 +62,9 @@ function Hero() {
     <StyledAboutHeroContainer>
       <StyledImage src={akim2020} alt='Akim Benchiha' />
       <StyledImageCaption className='about__img-caption'>
-        <p>Download Resumé</p>
+        <a aria-label='Download Resumé' href={resumeEN} rel='noreferrer noopener'>
+          Download Resumé
+        </a>
       </StyledImageCaption>
     </StyledAboutHeroContainer>
   )
