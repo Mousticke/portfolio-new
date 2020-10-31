@@ -53,8 +53,10 @@ export const themeLight = {
     },
     text: {
       default: '#9fa4b3',
-      heading: '#fff',
+      heading: '#d0dbfd',
       greeting: '#00E0D8',
+      section_number: '#00E0D8',
+      contact_header: '#00E0D8',
       quote_author: '#6c757d',
     },
   },
@@ -116,9 +118,10 @@ export const themeDark = {
     },
     text: {
       default: '#9fa4b3',
-      heading: '#fff',
+      heading: '#d0dbfd',
       greeting: '#00E0D8',
       section_number: '#00E0D8',
+      contact_header: '#00E0D8',
       quote_author: '#6c757d',
     },
   },

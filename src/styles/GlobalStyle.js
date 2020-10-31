@@ -96,9 +96,10 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     font-weight: ${fonts.weight.headers};
-    margin: 0.7rem 0;
+    margin: 0.4rem 0;
     line-height: 1.1;
-    font-weight: 600;
+    color:${themeDark.colors.text.heading};
+
   }
 
   h1{
@@ -181,10 +182,20 @@ const GlobalStyle = createGlobalStyle`
     -webkit-box-align: center;
     align-items: center;
     position: relative;
-    margin: 10px 0px 40px;
     width: 100%;
     white-space: nowrap;
     font-family: 'Inconsolata';
+  }
+
+  .contact-heading{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    color: ${themeDark.colors.text.section_number};
   }
 
   .numbered-heading::after {

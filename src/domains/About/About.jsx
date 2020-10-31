@@ -14,7 +14,6 @@ const StyledGrid = styled.div`
   grid-template-areas:
     'title title'
     'description hero';
-  grid-gap: 1rem;
   ${breakpoints.desktop`
   grid-template-rows: minmax(0, auto) minmax(0, auto) minmax(200px, 350px);
   grid-template-columns:minmax(0, auto);

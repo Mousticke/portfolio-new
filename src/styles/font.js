@@ -1,10 +1,10 @@
 const fonts = {
   style: {
     sans_serif:
-      'Inconsolata, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+      'Calibre Inconsolata, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
     monospace: 'SFMono-Regular, Menlo, Monaco, Liberation Mono, Courier New, monospace',
     default: 'Poppins, sans-serif',
-    navbar: 'Inconsolata, monospace',
+    navbar: 'Calibre Inconsolata, monospace',
   },
   size: {
     root_giant: '20px',

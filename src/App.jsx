@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, themeLight, GlobalStyle, sizes, transitionSection } from '@styles'
 import { SEO, Main, Modal } from '@components'
-import { Navbar, Landing, About, Project, Experience } from '@domains'
+import { Navbar, Landing, About, Project, Experience, Contact } from '@domains'
 import { throttle, sr } from '@utils'
 import scrollConfig from '@config/scrollReveal'
 import { ModalProvider } from '@context/modalContext'
@@ -21,7 +21,6 @@ const Wrapper = styled.div`
 const Footer = styled.footer`
   grid-area: footer;
   flex: 0 0 100%;
-  min-height: 100vh;
 `
 
 const Section = styled.section`
@@ -149,11 +148,12 @@ function App() {
               <Section Fluid Reveal id='projects' ref={revealProjectContainer}>
                 <Project />
               </Section>
+              <Section Fluid Reveal id='contact' ref={revealContactContainer}>
+                <Contact />
+              </Section>
             </Main>
 
-            <Footer id='contact' ref={revealContactContainer}>
-              Hi there.
-            </Footer>
+            <Footer id='footer'>Hi there.</Footer>
           </Wrapper>
         </Container>
       </ModalProvider>
