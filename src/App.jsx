@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useRef } from 'react'
+import React, { useState, useCallback, useEffect, useReducer, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, themeLight, GlobalStyle, sizes, transitionSection } from '@styles'
@@ -20,9 +20,8 @@ const Wrapper = styled.div`
 `
 const Footer = styled.footer`
   grid-area: footer;
-  background: red;
   flex: 0 0 100%;
-  height: 3rem;
+  min-height: 100vh;
 `
 
 const Section = styled.section`
@@ -70,44 +69,57 @@ function App() {
   const revealAboutContainer = useRef(null)
   const revealExperienceContainer = useRef(null)
   const revealProjectContainer = useRef(null)
+  const revealContactContainer = useRef(null)
+
+  const handleScroll = useCallback(
+    throttle(() => {
+      const topScroll = window.scrollY < 100 && window.innerWidth <= sizes.tablet.max
+      if (topScroll !== isTop) {
+        setIsTop(topScroll)
+      }
+      if (
+        window.scrollY >= revealAboutContainer.current.offsetTop &&
+        window.scrollY <= revealAboutContainer.current.offsetTop + revealAboutContainer.current.clientHeight
+      ) {
+        setActiveLink('about')
+      }
+      if (
+        window.scrollY >= revealExperienceContainer.current.offsetTop &&
+        window.scrollY <= revealExperienceContainer.current.clientHeight + revealExperienceContainer.current.offsetTop
+      ) {
+        setActiveLink('experiences')
+      }
+      if (
+        window.scrollY >= revealProjectContainer.current.offsetTop &&
+        window.scrollY <= revealProjectContainer.current.clientHeight + revealProjectContainer.current.offsetTop
+      ) {
+        setActiveLink('projects')
+      }
+      if (
+        window.scrollY >= revealContactContainer.current.offsetTop &&
+        window.scrollY <= revealContactContainer.current.clientHeight + revealContactContainer.current.offsetTop
+      ) {
+        setActiveLink('contact')
+      }
+      if (window.scrollY < revealAboutContainer.current.offsetTop) {
+        setActiveLink('home')
+      }
+    }),
+    [isTop]
+  )
 
   useEffect(() => {
-    window.addEventListener(
-      'scroll',
-      throttle(() => {
-        const topScroll = window.scrollY < 100 && window.innerWidth <= sizes.tablet.max
-        if (topScroll !== isTop) {
-          setIsTop(topScroll)
-        }
-        if (
-          window.scrollY >= revealAboutContainer.current.offsetTop &&
-          window.scrollY <= revealAboutContainer.current.offsetTop + revealAboutContainer.current.clientHeight
-        ) {
-          setActiveLink('about')
-        }
-        if (
-          window.scrollY >= revealExperienceContainer.current.offsetTop &&
-          window.scrollY <= revealExperienceContainer.current.clientHeight + revealExperienceContainer.current.offsetTop
-        ) {
-          setActiveLink('experience')
-        }
-        if (
-          window.scrollY >= revealProjectContainer.current.offsetTop &&
-          window.scrollY <= revealProjectContainer.current.clientHeight + revealProjectContainer.current.offsetTop
-        ) {
-          setActiveLink('projects')
-        }
-        if (window.scrollY < revealAboutContainer.current.offsetTop) {
-          setActiveLink('home')
-        }
-      })
-    )
-  }, [isTop, activeLink])
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [handleScroll])
 
   useEffect(() => {
     sr.reveal(revealAboutContainer.current, scrollConfig())
     sr.reveal(revealExperienceContainer.current, scrollConfig())
     sr.reveal(revealProjectContainer.current, scrollConfig())
+    sr.reveal(revealContactContainer.current, scrollConfig())
   }, [])
 
   return (
@@ -128,18 +140,18 @@ function App() {
               <Section Fluid id='home'>
                 <Landing />
               </Section>
-              <Section style={{ height: '100vh' }} Reveal id='about' ref={revealAboutContainer}>
+              <Section Fluid Reveal id='about' ref={revealAboutContainer}>
                 <About />
               </Section>
-              <Section style={{ height: '100vh' }} Reveal id='experience' ref={revealExperienceContainer}>
+              <Section Fluid Reveal id='experience' ref={revealExperienceContainer}>
                 <Experience />
               </Section>
-              <Section style={{ height: '100vh' }} Reveal id='projects' ref={revealProjectContainer}>
+              <Section Fluid Reveal id='projects' ref={revealProjectContainer}>
                 <Project />
               </Section>
             </Main>
 
-            <Footer style={{ height: '100vh' }} id='contact'>
+            <Footer id='contact' ref={revealContactContainer}>
               Hi there.
             </Footer>
           </Wrapper>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import styled from 'styled-components'
@@ -101,17 +101,21 @@ function Navbar({ isTop, activeLink }) {
     setShowSide((prevState) => !prevState)
   }
 
-  useEffect(() => {
-    const handleResize = () => {
+  const handleResize = useCallback(
+    throttle(() => {
       if (window.innerWidth > sizes.tablet.max && showSide) {
         setShowSide((prevState) => !prevState)
       }
-    }
-    window.addEventListener('resize', () => throttle(handleResize()))
+    }),
+    [showSide]
+  )
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
     return () => {
-      window.removeEventListener('resize', () => handleResize())
+      window.removeEventListener('resize', handleResize)
     }
-  }, [showSide])
+  }, [handleResize])
 
   return (
     <Header isTop={isTop}>
@@ -149,4 +153,4 @@ Navbar.propTypes = {
   activeLink: PropTypes.string.isRequired,
 }
 
-export default Navbar
+export default React.memo(Navbar)

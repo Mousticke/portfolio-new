@@ -42,6 +42,9 @@ export const themeLight = {
       highlight: '#52ffcf',
       underline: '#00E0D8',
     },
+    list: {
+      puce: '#00E0D8',
+    },
     hashtag: {
       background: '#182030',
       text: '#9daccc',
@@ -101,6 +104,9 @@ export const themeDark = {
       hover: '#00E0D8',
       highlight: '#52ffcf',
       underline: '#00E0D8',
+    },
+    list: {
+      puce: '#00E0D8',
     },
     hashtag: {
       background: '#182030',
