@@ -2,6 +2,6 @@
 
 ![CodeQL](https://github.com/Mousticke/portfolio-new/workflows/CodeQL/badge.svg?branch=master) 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/Mousticke/portfolio-new.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Mousticke/portfolio-new/alerts/)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/Mousticke/portfolio-new.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Mousticke/portfolio-new/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Mousticke/portfolio-new.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Mousticke/portfolio-new/context:javascript)
 
 Has to be completed with technologies, screenshots and a brief introduction of myself
