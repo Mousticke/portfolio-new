@@ -65,7 +65,7 @@ const Modal = () => {
     return (
       <ModalContainer modal={modal} aria-hidden={!modal}>
         <Helmet>
-          <body className={modal ? 'blur' : ''} />
+          <body className='blur' />
         </Helmet>
         <ModalGrid>
           <ModalCloseButton onClick={handleModal} type='button' aria-label='Modal'>
@@ -86,7 +86,11 @@ const Modal = () => {
       </ModalContainer>
     )
   }
-  return null
+  return (
+    <Helmet>
+      <body className='' />
+    </Helmet>
+  )
 }
 
 export default Modal
