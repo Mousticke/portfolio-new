@@ -6,6 +6,7 @@ import { transitionAll, breakpoints } from '@styles'
 import metaTag from '@config/metadata'
 import { ModalContext } from '@context/modalContext'
 import { Map } from '@components'
+import resumeEN from '@resources/resumeEN.pdf'
 
 const SummaryContainer = styled.div`
   grid-area: summary;
@@ -51,10 +52,15 @@ function Summary({ isMounted }) {
           </a>
         </CSSTransition>
         <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} unmountOnExit>
+          <a className='boxButton' href={resumeEN} aria-label='Resumé' style={{ transitionDelay: `${100}ms` }}>
+            Resumé
+          </a>
+        </CSSTransition>
+        <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} unmountOnExit>
           <button
             type='button'
             className='boxButton'
-            style={{ transitionDelay: `${200}ms` }}
+            style={{ transitionDelay: `${100}ms` }}
             aria-label='Explore'
             onClick={() => handleModal(<Map />)}
           >
