@@ -68,7 +68,7 @@ const Border = styled.div`
 const Circle = styled.span`
   display: block;
   position: absolute;
-  left: -1.965em;
+  left: -1.73em;
   top: 1.2em;
   border: solid 2px #304155; /*#304155 35e8c6*/
   border-radius: 50%;

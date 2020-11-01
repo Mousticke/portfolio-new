@@ -32,9 +32,9 @@ function Contact() {
 
       <CSSTransition in={isMounted} classNames='fadeup' timeout={1000} unmountOnExit>
         <p>
-          I am not looking for any new jobs. Nevertheless, you can always contact me via e-mail. My inbox is always open
-          and I am ready for any collaboration or projects. Whether you contact me for an issue, question, comment or
-          just for a greeting, I will try my best to answer you, should the e-mail is not a spam.
+          I am not looking for any new opportunities. Nevertheless, you can always contact me via e-mail. My inbox is
+          always open and I am ready for any collaboration or projects. Whether you contact me for an issue, question,
+          comment or just for a greeting, I will try my best to answer you, should the e-mail is not a spam.
         </p>
       </CSSTransition>
 

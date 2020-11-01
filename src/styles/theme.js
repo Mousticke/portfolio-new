@@ -15,7 +15,9 @@ export const themeLight = {
     background: {
       default: '#08121F',
       // section_default: '#0C192A',
-      landing: 'radial-gradient(97.14% 97.14% at 50% 2.86%, #0F1E33 0%, #03070C 98.8%)',
+      // radial-gradient(97.14% 97.14% at 50% 2.86%,#0F1E33 0%,#09111b 98.8%);
+      // radial-gradient(97.14% 97.14% at 50% 2.86%, #0F1E33 0%, #03070C 98.8%)
+      landing: 'radial-gradient(97.14% 97.14% at 50% 2.86%,#0F1E33 0%,#09111b 98.8%)',
     },
     navbar: {
       inner: '#151F2D',
@@ -80,7 +82,7 @@ export const themeDark = {
     background: {
       default: '#08121F',
       // section_default: '#0C192A',
-      landing: 'radial-gradient(97.14% 97.14% at 50% 2.86%, #0F1E33 0%, #03070C 98.8%)',
+      landing: 'radial-gradient(97.14% 97.14% at 50% 2.86%,#0F1E33 0%,#09111b 98.8%)',
     },
     navbar: {
       inner: '#151F2D',

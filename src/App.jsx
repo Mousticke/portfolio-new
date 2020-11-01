@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import { themeDark, themeLight, GlobalStyle, sizes, transitionSection } from '@styles'
 import { SEO, Main, Modal } from '@components'
-import { Navbar, Landing, About, Project, Experience, Contact } from '@domains'
+import { Navbar, Landing, About, Project, Experience, Contact, FooterContainer } from '@domains'
 import { throttle, sr } from '@utils'
 import scrollConfig from '@config/scrollReveal'
 import { ModalProvider } from '@context/modalContext'
@@ -20,7 +20,13 @@ const Wrapper = styled.div`
 `
 const Footer = styled.footer`
   grid-area: footer;
-  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  min-height: 5rem;
+  padding: 1rem;
+  text-align: center;
 `
 
 const Section = styled.section`
@@ -153,7 +159,9 @@ function App() {
               </Section>
             </Main>
 
-            <Footer id='footer'>Hi there.</Footer>
+            <Footer id='footer'>
+              <FooterContainer />
+            </Footer>
           </Wrapper>
         </Container>
       </ModalProvider>
