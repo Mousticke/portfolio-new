@@ -7,7 +7,7 @@ const StyledFooterContainer = styled.div`
   flex-direction: column;
   line-height: 1;
   color: ${(props) => props.theme.colors.text.default};
-  font-family: ${fonts.style.footer};
+  font-family: ${fonts.style.mono};
 `
 
 const StyledTextLink = styled.a`

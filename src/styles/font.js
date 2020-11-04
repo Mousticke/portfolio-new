@@ -4,7 +4,7 @@ const fonts = {
       'Calibre Inconsolata, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
     monospace: 'SFMono-Regular, Menlo, Monaco, Liberation Mono, Courier New, monospace',
     default: 'Poppins, sans-serif',
-    footer: '"SF Mono","Fira Code","Fira Mono","Roboto Mono",monospace',
+    mono: '"SF Mono","Fira Code","Fira Mono","Roboto Mono",monospace',
     navbar: 'Calibre Inconsolata, monospace',
   },
   size: {

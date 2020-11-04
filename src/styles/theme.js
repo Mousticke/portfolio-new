@@ -36,7 +36,9 @@ export const themeLight = {
       inner: 'transparent',
       border: '#00E0D8',
       text: '#00E0D8',
+      transparent_text_green: '#9cfffb6b',
       hover: 'rgba(0, 224, 216, 0.17)',
+      hover_navyBlue: '#112746',
     },
     link: {
       default: '#fff',
@@ -60,6 +62,9 @@ export const themeLight = {
       section_number: '#00E0D8',
       contact_header: '#00E0D8',
       quote_author: '#6c757d',
+    },
+    barBorder: {
+      background: '#00E0D8',
     },
   },
 }
@@ -101,7 +106,9 @@ export const themeDark = {
       inner: 'transparent',
       border: '#00E0D8',
       text: '#00E0D8',
+      transparent_text_green: '#9cfffb6b',
       hover: 'rgba(0, 224, 216, 0.17)',
+      hover_navyBlue: '#112746',
     },
     link: {
       default: '#fff',
@@ -125,6 +132,9 @@ export const themeDark = {
       section_number: '#00E0D8',
       contact_header: '#00E0D8',
       quote_author: '#6c757d',
+    },
+    barBorder: {
+      background: '#00E0D8',
     },
   },
 }
