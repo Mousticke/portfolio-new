@@ -2,6 +2,7 @@ const experiencesData = [
   {
     id: '0',
     company: 'Davidson',
+    url: 'https://www.davidson.fr/',
     title: 'Consulting Engineer',
     type: 'Permanent Contract ',
     summary:
@@ -58,6 +59,7 @@ const experiencesData = [
   {
     id: '2',
     company: 'Cloudzen',
+    url: 'https://cloudzen.tech/',
     title: 'Software Engineer',
     type: 'Internship',
     summary:
@@ -102,13 +104,14 @@ const experiencesData = [
       {
         id: '2',
         name: 'Edmund Shen',
-        title: 'Project Manager',
+        title: 'Creative Director Project Manager',
       },
     ],
   },
   {
     id: '3',
     company: 'Everysens',
+    url: 'https://www.everysens.com',
     title: 'Front-End Engineer',
     type: 'Internship',
     summary:
@@ -143,13 +146,14 @@ const experiencesData = [
       {
         id: '1',
         name: 'Vincent Ollivier',
-        title: 'Front-End Engineer',
+        title: 'Lead Front-End Engineer',
       },
     ],
   },
   {
     id: '4',
     company: 'E.I.E',
+    url: 'http://ww.weie.fr',
     title: 'Assistant Quality Health and Security Environment Manager',
     type: 'Fixed-term Contract',
     summary:

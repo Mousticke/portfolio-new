@@ -74,7 +74,6 @@ const StyledTechnologies = styled.div`
     flex-direction: column;
     align-content: center;
     align-items: center;
-}
   `}
 `
 

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
 import styled from 'styled-components'
-import { transitionAll, fonts } from '@styles'
+import { transitionAll, fonts, breakpoints } from '@styles'
 import { CSSTransition } from 'react-transition-group'
 import experiencesData from '@config/experiencesData'
 
@@ -12,8 +12,37 @@ const StyledGrid = styled.div`
   grid-template-areas:
     'title title'
     'list list'
-    'info mission';
+    'experience experience';
 `
+const StyledExperienceContent = styled.div`
+  grid-area: experience;
+  display: ${(props) => (props.isShown ? 'grid' : 'none')};
+  flex-grow: 1;
+  width: 100%;
+  height: auto;
+  padding-top: 0.5rem;
+  grid-gap: 1rem;
+  grid-template-rows: minmax(0, auto) minmax(0, auto);
+  grid-template-columns: minmax(250px, auto) 2fr;
+  grid-template-areas:
+    'info mission'
+    'contact contact';
+  transition: ${transitionAll};
+  ${breakpoints.desktop`
+    grid-template-columns: minmax(100px, 200px) 2fr;
+    grid-gap: 0rem;
+  `}
+  ${breakpoints.tablet`
+  grid-template-rows: minmax(0, auto) minmax(0, auto) minmax(0, auto);
+    grid-template-columns: 1fr;
+    grid-gap: 0rem;
+    grid-template-areas:
+    'info'
+    'mission'
+    'contact';
+  `}
+`
+
 const StyledExperienceTitle = styled.h2`
   grid-area: title;
 `
@@ -24,20 +53,34 @@ const StyledListExperienceContainer = styled.div`
 
 const StyledInfoExperienceContainer = styled.div`
   grid-area: info;
+  ${breakpoints.tablet`
+    display: flex;
+    flex-direction: row;
+  `}
 `
 
 const StyledMissionExperienceContainer = styled.div`
   grid-area: mission;
 `
 
+const StyledContactExperienceContainer = styled.div`
+  grid-area: contact;
+  display: flex;
+  flex-direction: column;
+`
+
 const StyledListContainer = styled.ul`
   display: flex;
   position: relative;
+  z-index: 10;
   margin: 0;
   padding: 0;
   width: max-content;
   list-style: none;
-  overflow-x: auto;
+  ${breakpoints.tablet`
+    overflow-x: auto;
+    width: calc(100% + 100px);
+  `}
 `
 
 const StyledButton = styled.button`
@@ -81,12 +124,88 @@ const StyledBorderHighlight = styled.div`
   transition-delay: 0.1s;
 `
 
-const StyledExperienceContent = styled.div`
-  flex-grow: 1;
-  width: 100%;
-  height: auto;
-  padding-top: 0.5rem;
+const StyledTitleExperience = styled.p`
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: ${(props) => props.theme.colors.text.heading};
+  margin: 1rem 0 0 0;
 `
+
+const StyledCompanyExperience = styled.a`
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: ${(props) => props.theme.colors.link.highlight};
+  transition: ${transitionAll};
+
+  ${breakpoints.tablet`
+  margin-top: 1rem;
+  `}
+
+  &:hover {
+    font-style: italic;
+    &:after {
+      width: 100%;
+    }
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 1px;
+    position: relative;
+    bottom: 0.15em;
+    background-color: ${(props) => props.theme.colors.link.underline};
+    transition: ${transitionAll};
+    opacity: 0.5;
+  }
+`
+
+const StyledListOutcomesContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  overflow: hidden;
+  list-style: none;
+}
+`
+const StyledListItem = styled.li`
+  position: relative;
+  font-size: 0.9em;
+  margin-bottom: 0.3em;
+  padding-left: 1.2em;
+
+  &:before {
+    content: '◈';
+    line-height: 2em;
+    font-size: 0.8em;
+    padding-right: 0.5em;
+    color: ${(props) => props.theme.colors.list.puce};
+  }
+`
+
+const StyledOutcomesExperience = styled.div`
+  ${breakpoints.desktop`
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+  `}
+`
+const StyledComplementExperience = styled.p`
+  margin: 0.3rem 0 0.3rem 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: ${transitionAll};
+  ${breakpoints.tablet`
+  margin: 1rem 0 0 0;
+  `}
+`
+
+const StyledReferrals = styled.p`
+  margin: 0;
+`
+const StyledReferralsTitle = styled.h6``
 
 function Experience() {
   const [activeExpId, setActiveExpId] = useState(0)
@@ -163,28 +282,47 @@ function Experience() {
       </StyledListExperienceContainer>
 
       {experiencesData &&
-        experiencesData.map(({ id }, i) => (
-          <CSSTransition key={id} in={activeExpId === { i }} timeout={250} classNames='fade'>
+        experiencesData.map(({ id, company, url, title, type, summary, outcomes, startDate, endDate, contact }, i) => (
+          <CSSTransition key={id} in={activeExpId === i} timeout={100} classNames='fade'>
             <StyledExperienceContent
               id={`info-${i}`}
               role='tabpanel'
               tabIndex={activeExpId === i ? '0' : '-1'}
               aria-labelledby={`exp-${i}`}
               aria-hidden={activeExpId !== i}
+              isShown={activeExpId === i}
               hidden={activeExpId !== i}
             >
               <StyledInfoExperienceContainer>
-                <p>
-                  Here come the info experience
-                  {i}
-                </p>
+                <StyledTitleExperience>{`${title}`}</StyledTitleExperience>
+                <StyledCompanyExperience
+                  aria-label={`${title}`}
+                  href={`${url}`}
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  {`@${company}`}
+                </StyledCompanyExperience>
+                <StyledComplementExperience>{`From ${startDate} to ${endDate}`}</StyledComplementExperience>
+                <StyledComplementExperience>{`${type}`}</StyledComplementExperience>
               </StyledInfoExperienceContainer>
               <StyledMissionExperienceContainer>
-                <p>
-                  Here come the mission experience
-                  {i}
-                </p>
+                <p>{`${summary}`}</p>
+                <StyledOutcomesExperience>
+                  <StyledListOutcomesContainer>
+                    {outcomes && outcomes.map((value) => <StyledListItem>{value}</StyledListItem>)}
+                  </StyledListOutcomesContainer>
+                </StyledOutcomesExperience>
               </StyledMissionExperienceContainer>
+              <StyledContactExperienceContainer>
+                <StyledReferralsTitle>Below my referral(s).</StyledReferralsTitle>
+                {contact &&
+                  contact.map(({ name, ...value }) => (
+                    <div key={value.id}>
+                      <StyledReferrals>{`→ ${name} - ${value.title}`}</StyledReferrals>
+                    </div>
+                  ))}
+              </StyledContactExperienceContainer>
             </StyledExperienceContent>
           </CSSTransition>
         ))}
