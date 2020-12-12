@@ -80,7 +80,7 @@ const GlobalStyle = createGlobalStyle`
       "header main"
       "header footer";
     ${breakpoints.tablet`
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr auto auto;
     grid-template-columns: 100%;
     grid-template-areas: 
       "header"

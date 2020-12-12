@@ -53,10 +53,6 @@ const StyledListExperienceContainer = styled.div`
 
 const StyledInfoExperienceContainer = styled.div`
   grid-area: info;
-  ${breakpoints.tablet`
-    display: flex;
-    flex-direction: row;
-  `}
 `
 
 const StyledMissionExperienceContainer = styled.div`
@@ -75,11 +71,11 @@ const StyledListContainer = styled.ul`
   z-index: 10;
   margin: 0;
   padding: 0;
-  width: max-content;
+  /*width: max-content;*/
   list-style: none;
   ${breakpoints.tablet`
     overflow-x: auto;
-    width: calc(100% + 100px);
+    
   `}
 `
 
@@ -129,6 +125,9 @@ const StyledTitleExperience = styled.p`
   font-weight: 500;
   color: ${(props) => props.theme.colors.text.heading};
   margin: 1rem 0 0 0;
+  ${breakpoints.desktop`
+      margin: 0.3rem 0 0 0;
+  `}
 `
 
 const StyledCompanyExperience = styled.a`
@@ -136,10 +135,6 @@ const StyledCompanyExperience = styled.a`
   font-weight: 500;
   color: ${(props) => props.theme.colors.link.highlight};
   transition: ${transitionAll};
-
-  ${breakpoints.tablet`
-  margin-top: 1rem;
-  `}
 
   &:hover {
     font-style: italic;
@@ -197,9 +192,6 @@ const StyledComplementExperience = styled.p`
   font-size: 0.8rem;
   font-weight: 600;
   transition: ${transitionAll};
-  ${breakpoints.tablet`
-  margin: 1rem 0 0 0;
-  `}
 `
 
 const StyledReferrals = styled.p`
