@@ -37,7 +37,7 @@
     "scrollreveal": "^4.0.7",
     "serialize-javascript": "^3.1.0",
     "ssri": "^8.0.1",
-    "styled-components": "^5.1.1",
+    "styled-components": "^5.3.0",
     "websocket-extensions": "^0.1.4"
   },
   "size-limit": [
